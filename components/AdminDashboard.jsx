@@ -22,7 +22,7 @@ const AdminDashboard = ({ children }) => {
 
     const router = useRouter();
 
-    function sighnoutuser() { signout(() => router.push(`/trainspeedtest-admin`)) }
+    function sighnoutuser() { signout(() => router.push(`/dirmatech-admin`)) }
 
 
 
