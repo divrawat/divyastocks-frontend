@@ -1,9 +1,9 @@
 import fetch from 'isomorphic-fetch';
-import { DOMAIN } from '@/config';
+import { DOMAIN, BACKEND } from '@/config';
 
 export const createBlog = async (blog, token) => {
     try {
-        const response = await fetch(`${DOMAIN}/api/blog/create`, {
+        const response = await fetch(`${BACKEND}/api/blog/create`, {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -17,10 +17,10 @@ export const createBlog = async (blog, token) => {
     }
 };
 
-
+/*
 export const listBlogsWithCategoriesAndTags = async () => {
     try {
-        const response = await fetch(`${DOMAIN}/api/blog/blogs-categories-tags`, {
+        const response = await fetch(`${BACKEND}/api/blogs-categories-tags`, {
             method: 'GET',
             headers: {
                 Accept: 'application/json',
@@ -32,18 +32,38 @@ export const listBlogsWithCategoriesAndTags = async () => {
         console.log(err);
     }
 };
+*/
 
 
-
-export const allblogs = async () => {
+export const listBlogsWithCategoriesAndTags = async (page = 1, perPage = 5) => {
     try {
-        const response = await fetch(`${DOMAIN}/api/blog/sitemapslugs`, {
+        const response = await fetch(`${BACKEND}/api/blogs-categories-tags?page=${page}&perPage=${perPage}`, {
             method: 'GET',
             headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json'
             }
         });
+        return await response.json();
+    } catch (err) {
+        console.log(err);
+        return { blogs: [], pagination: null };
+    }
+};
+
+
+
+export const allblogs = async () => {
+    try {
+        const response = await fetch(`${BACKEND}/api/allblogslugs`, {
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            }
+        });
+
+
         return await response.json();
     } catch (err) {
         return console.log(err);
@@ -54,7 +74,7 @@ export const allblogs = async () => {
 
 export const singleBlog = async (slug) => {
     try {
-        const response = await fetch(`${DOMAIN}/api/blog/${slug}`, {
+        const response = await fetch(`${BACKEND}/api/blog/${slug}`, {
             method: 'GET'
         });
         return await response.json();
@@ -65,7 +85,7 @@ export const singleBlog = async (slug) => {
 
 export const singleDraft = async (slug) => {
     try {
-        const response = await fetch(`${DOMAIN}/api/blog/draft/${slug}`, {
+        const response = await fetch(`${BACKEND}/api/blog/draft/${slug}`, {
             method: 'GET'
         });
         return await response.json();
@@ -78,7 +98,7 @@ export const singleDraft = async (slug) => {
 
 export const listRelated = async (slug) => {
     try {
-        const response = await fetch(`${DOMAIN}/api/blog/${slug}`, {
+        const response = await fetch(`${BACKEND}/api/blog/${slug}`, {
             method: 'GET',
             headers: {
                 Accept: 'application/json',
@@ -95,7 +115,7 @@ export const listRelated = async (slug) => {
 export const removeBlog = async (slug, token) => {
 
     try {
-        const response = await fetch(`${DOMAIN}/api/blog/${slug}`, {
+        const response = await fetch(`${BACKEND}/api/blog/${slug}`, {
             method: 'DELETE',
             headers: {
                 Accept: 'application/json',
@@ -112,7 +132,7 @@ export const removeBlog = async (slug, token) => {
 export const removeDraftBlog = async (slug, token) => {
 
     try {
-        const response = await fetch(`${DOMAIN}/api/blog/draft/${slug}`, {
+        const response = await fetch(`${BACKEND}/api/blog/draft/${slug}`, {
             method: 'DELETE',
             headers: {
                 Accept: 'application/json',
@@ -134,7 +154,7 @@ export const removeDraftBlog = async (slug, token) => {
 
 export const updateBlog = async (blog, token, slug) => {
     try {
-        const response = await fetch(`${DOMAIN}/api/blog/${slug}`, {
+        const response = await fetch(`${BACKEND}/api/blog/${slug}`, {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -150,7 +170,7 @@ export const updateBlog = async (blog, token, slug) => {
 
 export const updateDraft = async (blog, token, slug) => {
     try {
-        const response = await fetch(`${DOMAIN}/api/blog/draft/${slug}`, {
+        const response = await fetch(`${BACKEND}/api/blog/draft/${slug}`, {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -167,7 +187,7 @@ export const updateDraft = async (blog, token, slug) => {
 
 export const list = async (page, search, token) => {
     try {
-        const response = await fetch(`${DOMAIN}/api/blog/allblogs?page=${page}&search=${search}`, {
+        const response = await fetch(`${BACKEND}/api/blog/allblogs?page=${page}&search=${search}`, {
             method: 'GET', headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
@@ -181,7 +201,7 @@ export const list = async (page, search, token) => {
 
 export const Feeds = async () => {
     try {
-        const response = await fetch(`${DOMAIN}/api/blog/feeds`, {
+        const response = await fetch(`${BACKEND}/api/blog/feeds`, {
             method: 'GET', headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
@@ -194,7 +214,7 @@ export const Feeds = async () => {
 
 export const draftlist = async (page, search, token) => {
     try {
-        const response = await fetch(`${DOMAIN}/api/blog/draft-blogs?page=${page}&search=${search}`, {
+        const response = await fetch(`${BACKEND}/api/blog/draft-blogs?page=${page}&search=${search}`, {
             method: 'GET', headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
@@ -215,7 +235,7 @@ export const draftlist = async (page, search, token) => {
 
 export const feedsDOMAIN = async () => {
     try {
-        const response = await fetch(`${DOMAIN}/rss`, {
+        const response = await fetch(`${BACKEND}/rss`, {
             method: 'GET',
             headers: {
                 Accept: 'application/json',
@@ -232,7 +252,7 @@ export const feedsDOMAIN = async () => {
 
 export const updateAllToDraft = async (token) => {
     try {
-        const response = await fetch(`${DOMAIN}/api/blog/bulk-update-articles-draft`, {
+        const response = await fetch(`${BACKEND}/api/blog/bulk-update-articles-draft`, {
             method: 'PUT',
             headers: {
                 Accept: 'application/json',
@@ -251,7 +271,7 @@ export const updateAllToDraft = async (token) => {
 
 export const updateAllToPublish = async (token) => {
     try {
-        const response = await fetch(`${DOMAIN}/api/blog/bulk-update-articles-publish`, {
+        const response = await fetch(`${BACKEND}/api/blog/bulk-update-articles-publish`, {
             method: 'PUT',
             headers: {
                 Accept: 'application/json',

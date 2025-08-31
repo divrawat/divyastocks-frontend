@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { ref, uploadBytesResumable, getDownloadURL, deleteObject } from "firebase/storage";
 import fetch from "isomorphic-fetch";
-import { DOMAIN } from "@/config";
+import { DOMAIN, BACKEND } from "@/config";
 import { getCookie } from '../../actions/auth';
 const token = getCookie('token');
 import { useEffect } from "react";
@@ -62,7 +62,7 @@ function ImageGallary() {
 
     const getImages = async (page) => {
         try {
-            const response = await fetch(`${DOMAIN}/api/images/get?page=${page}`, { method: 'GET' });
+            const response = await fetch(`${BACKEND}/api/allimages?page=${page}`, { method: 'GET' });
             return await response.json();
         } catch (err) { return console.log(err); }
     };
@@ -95,7 +95,7 @@ function ImageGallary() {
 
     const saveUrlToMongoDB = async (url, token) => {
         try {
-            const response = await fetch(`${DOMAIN}/api/images/upload`, {
+            const response = await fetch(`${BACKEND}/api/uploadimages`, {
                 method: 'POST',
                 headers: {
                     Accept: 'application/json',
@@ -112,7 +112,7 @@ function ImageGallary() {
     const removeImage = async (url, token) => {
         try {
             const encodedUrl = encodeURIComponent(url);
-            const response = await fetch(`${DOMAIN}/api/images/delete?url=${encodedUrl}`, {
+            const response = await fetch(`${BACKEND}/api/images/${encodedUrl}`, {
                 method: 'DELETE',
                 headers: {
                     Accept: 'application/json',

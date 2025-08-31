@@ -131,9 +131,9 @@ const AllBlogs = () => {
                             <th scope="col" className="px-6 py-3">
                                 Publish Date
                             </th>
-                            <th scope="col" className="px-6 py-3">
+                            {/* <th scope="col" className="px-6 py-3">
                                 Author
-                            </th>
+                            </th> */}
 
                             <th scope="col" className="px-6 py-3">
                                 <span className="sr-only">Edit</span>
@@ -152,9 +152,9 @@ const AllBlogs = () => {
                                 <td className="px-6 py-4">
                                     {formatCreatedAt(blog?.date)}
                                 </td>
-                                <td className="px-6 py-4">
+                                {/* <td className="px-6 py-4">
                                     {blog?.postedBy?.name}
-                                </td>
+                                </td> */}
 
 
                                 <td className="flex items-center gap-10 px-6 py-4">

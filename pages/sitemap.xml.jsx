@@ -19,8 +19,6 @@ const generateXmlSitemap = (blogs) => {
     <url>
       <loc>${`${DOMAIN}/${blog.slug}`}</loc>
       <lastmod>${formattedDate}</lastmod>
-      <priority>0.8</priority>
-      <changefreq>monthly</changefreq>
     </url>`;
   });
 

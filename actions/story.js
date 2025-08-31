@@ -1,8 +1,8 @@
-import { DOMAIN } from '../config';
+import { DOMAIN, BACKEND } from '../config';
 
 export const createwebstory = async (story, token) => {
     try {
-        const response = await fetch(`${DOMAIN}/api/web-stories/create`, {
+        const response = await fetch(`${BACKEND}/api/web-stories/create`, {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -19,7 +19,7 @@ export const createwebstory = async (story, token) => {
 
 export const singleStory = async (slug) => {
     try {
-        const response = await fetch(`${DOMAIN}/api/web-stories/${slug}`, {
+        const response = await fetch(`${BACKEND}/api/web-stories/${slug}`, {
             method: 'GET'
         });
         return await response.json();
@@ -31,7 +31,7 @@ export const singleStory = async (slug) => {
 
 export const list = async (page, search, token) => {
     try {
-        const response = await fetch(`${DOMAIN}/api/web-stories/allwebstories?page=${page}&search=${search}`, {
+        const response = await fetch(`${BACKEND}/api/web-stories/allwebstories?page=${page}&search=${search}`, {
             method: 'GET', headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
@@ -47,7 +47,7 @@ export const list = async (page, search, token) => {
 
 export const webstoryslugs = async () => {
     try {
-        const response = await fetch(`${DOMAIN}/api/web-stories/webstoryslugs`, {
+        const response = await fetch(`${BACKEND}/api/web-stories/webstoryslugs`, {
             method: 'GET'
         });
         return await response.json();
@@ -60,7 +60,7 @@ export const webstoryslugs = async () => {
 export const DeleteStory = async (slug, token) => {
 
     try {
-        const response = await fetch(`${DOMAIN}/api/web-stories/${slug}`, {
+        const response = await fetch(`${BACKEND}/api/web-stories/${slug}`, {
             method: 'DELETE',
             headers: {
                 Accept: 'application/json',
@@ -79,7 +79,7 @@ export const DeleteStory = async (slug, token) => {
 export const updateStory = async (story, token, slug) => {
 
     try {
-        const response = await fetch(`${DOMAIN}/api/web-stories/${slug}`, {
+        const response = await fetch(`${BACKEND}/api/web-stories/${slug}`, {
             method: 'PATCH',
             headers: {
                 Accept: 'application/json',
@@ -96,7 +96,7 @@ export const updateStory = async (story, token, slug) => {
 
 export const draftlist = async (page, search, token) => {
     try {
-        const response = await fetch(`${DOMAIN}/api/web-stories/allwebstories-draft?page=${page}&search=${search}`, {
+        const response = await fetch(`${BACKEND}/api/web-stories/allwebstories-draft?page=${page}&search=${search}`, {
             method: 'GET', headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
@@ -117,7 +117,7 @@ export const draftlist = async (page, search, token) => {
 
 export const updateAllToDraft = async (token) => {
     try {
-        const response = await fetch(`${DOMAIN}/api/web-stories/bulk-update-stories-draft`, {
+        const response = await fetch(`${BACKEND}/api/web-stories/bulk-update-stories-draft`, {
             method: 'PUT',
             headers: {
                 Accept: 'application/json',
@@ -136,7 +136,7 @@ export const updateAllToDraft = async (token) => {
 
 export const updateAllToPublish = async (token) => {
     try {
-        const response = await fetch(`${DOMAIN}/api/web-stories/bulk-update-stories-publish`, {
+        const response = await fetch(`${BACKEND}/api/web-stories/bulk-update-stories-publish`, {
             method: 'PUT',
             headers: {
                 Accept: 'application/json',

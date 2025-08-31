@@ -33,7 +33,7 @@ const EditBlogPage = () => {
         draft: 'Save Draft',
         photo: '',
         loading: false,
-        updatetext: 'Publish',
+        updatetext: 'Update',
     });
 
     const { error, success, loading, formData, title, draft, updatetext, mtitle, mdesc, slug, userId, date, photo } = values;
@@ -77,18 +77,19 @@ const EditBlogPage = () => {
                     else if (isAuth().role == 1) { Router.push(`/admin`); }
                     else if (isAuth().role !== 1) { Router.push(`/`); }
                 } else {
-                    const dateFromString = new Date(Date.parse(data?.blogpost?.date));
-                    setValues({ ...values, title: data?.blogpost?.title, mtitle: data?.blogpost?.mtitle, date: dateFromString, photo: data?.blogpost?.photo, slug: data?.blogpost?.slug, mdesc: data?.blogpost?.mdesc });
-                    setBody(data?.blogpost?.body);
-                    setCategoriesArray(data?.blogpost?.categories);
+                    const dateFromString = new Date(Date.parse(data?.date));
+
+                    setValues({ ...values, title: data?.title, mtitle: data?.mtitle, date: dateFromString, photo: data?.photo, slug: data?.slug, mdesc: data?.mdesc });
+                    setBody(data?.body);
+                    setCategoriesArray(data?.categories);
                     formData.set('userId', isAuth()?._id);
-                    formData.set('title', data?.blogpost?.title);
-                    formData.set('mtitle', data?.blogpost?.mtitle);
-                    formData.set('mdesc', data?.blogpost?.mdesc);
-                    formData.set('slug', data?.blogpost?.slug);
+                    formData.set('title', data?.title);
+                    formData.set('mtitle', data?.mtitle);
+                    formData.set('mdesc', data?.mdesc);
+                    formData.set('slug', data?.slug);
                     formData.set('date', dateFromString);
-                    formData.set('photo', data?.blogpost?.photo);
-                    formData.set('categories', data?.blogpost?.categories.map(c => c._id).join(','));
+                    formData.set('photo', data?.photo);
+                    formData.set('categories', data?.categories?.map(c => c?._id).join(','));
                 }
             });
         }
@@ -105,14 +106,14 @@ const EditBlogPage = () => {
             if (data.error) {
                 setValues({ ...values, error: data.error });
             } else {
-                setCategories(data?.categories);
+                setCategories(data);
             }
         });
     };
 
     const setCategoriesArray = blogCategories => {
         let ca = [];
-        blogCategories.map((c, i) => {
+        blogCategories?.map((c, i) => {
             ca.push(c._id);
         });
         setChecked(ca);
@@ -151,13 +152,13 @@ const EditBlogPage = () => {
 
     const handleDateChange = (date) => {
         const name = 'date';
-        formData.set(name, date);
+        formData?.set(name, date);
         setValues({ ...values, [name]: date, formData, error: '' });
     };
 
     const handleBody = (e) => {
         setBody(e);
-        formData.set('body', e);
+        formData?.set('body', e);
     };
 
     return (
@@ -197,7 +198,7 @@ const EditBlogPage = () => {
                             </div>}
                             <button onClick={e => editBlog(e, 'Publish')} type="submit" className="bg-slate-900 text-white tracking-wider px-3 py-2 font-semibold rounded-md hover:shadow-md transition-transform hover:scale-105 hover:text-[yellow] active:scale-95 text-sm mt-2">{updatetext}</button>
                             <br />
-                            <button onClick={e => editBlog(e, 'Draft')} type="submit" className="bg-slate-900 text-white tracking-wider px-3 py-2 font-semibold rounded-md hover:shadow-md transition-transform hover:scale-105 hover:text-[yellow] active:scale-95 text-sm mt-2">{draft}</button>
+                            {/* <button onClick={e => editBlog(e, 'Draft')} type="submit" className="bg-slate-900 text-white tracking-wider px-3 py-2 font-semibold rounded-md hover:shadow-md transition-transform hover:scale-105 hover:text-[yellow] active:scale-95 text-sm mt-2">{draft}</button> */}
                         </div>
 
                         <div className="mt-5">

@@ -105,7 +105,7 @@ const CreateBlogPage = () => {
             if (data.error) {
                 setValues({ ...values, error: data.error });
             } else {
-                setCategories(data.categories);
+                setCategories(data);
             }
         });
     };
@@ -208,7 +208,7 @@ const CreateBlogPage = () => {
                             </div>}
                             <button onClick={e => publishBlog(e, 'Publish')} type="submit" className="bg-slate-900 text-white tracking-wider px-3  py-2 font-semibold rounded-md hover:shadow-md transition-transform hover:scale-105 hover:text-[yellow] active:scale-95 text-sm mt-2">{publishtext}</button>
                             <br />
-                            <button onClick={e => publishBlog(e, 'Draft')} type="submit" className="bg-slate-900 text-white tracking-wider px-3  py-2 font-semibold rounded-md hover:shadow-md transition-transform hover:scale-105 hover:text-[yellow] active:scale-95 text-sm mt-2">{draft}</button>
+                            {/* <button onClick={e => publishBlog(e, 'Draft')} type="submit" className="bg-slate-900 text-white tracking-wider px-3  py-2 font-semibold rounded-md hover:shadow-md transition-transform hover:scale-105 hover:text-[yellow] active:scale-95 text-sm mt-2">{draft}</button> */}
                         </div>
 
                         <div className="mt-5">

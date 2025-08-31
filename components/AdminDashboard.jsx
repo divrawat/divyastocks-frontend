@@ -22,7 +22,7 @@ const AdminDashboard = ({ children }) => {
 
     const router = useRouter();
 
-    function sighnoutuser() { signout(() => router.push(`/dirmatech-admin`)) }
+    function sighnoutuser() { signout(() => router.push(`/divyanshu-admin`)) }
 
 
 
@@ -35,7 +35,7 @@ const AdminDashboard = ({ children }) => {
 
     const fetchData = async () => {
 
-        if (!isAuth()) { router.push('/trainspeedtest-admin'); }
+        if (!isAuth()) { router.push('/divyanshu-admin'); }
     }
 
     useEffect(() => { fetchData(); }, [])
@@ -63,24 +63,26 @@ const AdminDashboard = ({ children }) => {
             subItems: [
                 { pathname: '/admin/add-blog', target: "_blank", icon: <FaPlus size={20} />, text: 'Add Post' },
                 { pathname: '/admin/edit-blogs', icon: <MdEditSquare size={20} />, text: 'All Posts' },
-                { pathname: '/admin/draft-blogs', icon: <MdEditSquare size={20} />, text: 'Drafts' },
-                { pathname: '/admin/blogs-bulk', icon: <MdEditSquare size={20} />, text: 'Bulk' },
+                // { pathname: '/admin/draft-blogs', icon: <MdEditSquare size={20} />, text: 'Drafts' },
+                // { pathname: '/admin/blogs-bulk', icon: <MdEditSquare size={20} />, text: 'Bulk' },
             ]
         },
 
-
-        {
-            pathname: '', icon: <GoFileDirectoryFill size={20} />, text: 'WebStories', arrow: <MdKeyboardArrowDown size={20} />,
-            subItems: [
-                { pathname: '/admin/web-stories/create-story', target: "_blank", icon: <FaPlus size={20} />, text: 'Add Story' },
-                { pathname: '/admin/web-stories/all-stories', icon: <MdEditSquare size={20} />, text: 'All Stories' },
-                { pathname: '/admin/web-stories/draft-stories', icon: <MdEditSquare size={20} />, text: 'Drafts' },
-                { pathname: '/admin/web-stories/bulk', icon: <MdEditSquare size={20} />, text: 'Bulk' },
-            ]
-        },
+        /*
+                {
+                    pathname: '', icon: <GoFileDirectoryFill size={20} />, text: 'WebStories', arrow: <MdKeyboardArrowDown size={20} />,
+                    subItems: [
+                        { pathname: '/admin/web-stories/create-story', target: "_blank", icon: <FaPlus size={20} />, text: 'Add Story' },
+                        { pathname: '/admin/web-stories/all-stories', icon: <MdEditSquare size={20} />, text: 'All Stories' },
+                        { pathname: '/admin/web-stories/draft-stories', icon: <MdEditSquare size={20} />, text: 'Drafts' },
+                        { pathname: '/admin/web-stories/bulk', icon: <MdEditSquare size={20} />, text: 'Bulk' },
+                    ]
+                },
+                */
 
         { pathname: '/admin/category', icon: <MdCategory size={20} />, text: 'Categories' },
         { pathname: '/admin/images', icon: <ImImages size={20} />, text: 'Images' },
+        { pathname: '/contact', icon: <ImImages size={20} />, text: 'Contact' },
 
     ], []);
 

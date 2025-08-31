@@ -73,7 +73,7 @@ const Category = () => {
         getCategories().then(data => {
             if (data.error) { console.log(data.error); }
             else {
-                setValues({ ...values, categories: data?.categories });
+                setValues({ ...values, categories: data });
             }
         });
     };
@@ -87,7 +87,7 @@ const Category = () => {
                 setValues({ ...values, error: data.error, success: false, loading: false });
             }
             else {
-                toast.success(data.message);
+                toast.success('Category Created Successfully');
                 setValues({ ...values, error: false, loading: false, success: true, name: '', description: '', removed: false, reload: !reload });
             }
         });

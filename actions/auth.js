@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-fetch';
 import cookie from 'js-cookie';
-import { DOMAIN } from '@/config';
+import { DOMAIN, BACKEND } from '@/config';
 
 /*
 export const adminsignup = async (user, token) => {
@@ -23,7 +23,7 @@ export const adminsignup = async (user, token) => {
 
 export const adminSignin = async user => {
     try {
-        const response = await fetch(`${DOMAIN}/api/login`, {
+        const response = await fetch(`${BACKEND}/api/login`, {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -43,7 +43,7 @@ export const signout = async next => {
     removeCookie('token');
     removeLocalStorage('user');
     try {
-        const response = await fetch(`${DOMAIN}/api/admin-signout`, { method: 'GET' });
+        const response = await fetch(`${BACKEND}/api/admin-signout`, { method: 'GET' });
         next();
     } catch (err) { return console.log(err); }
 };
