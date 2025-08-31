@@ -33,7 +33,7 @@
     "striptags": "^3.2.0",
     "suneditor": "^2.45.1",
     "suneditor-react": "^3.6.1",
-    "vercel": "^42.3.0"
+    "vercel": "^43.3.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",
