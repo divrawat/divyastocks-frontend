@@ -1,6 +1,7 @@
 import { Feeds } from '@/actions/blog';
 import { DOMAIN, APP_NAME, APP_DESCRIPTION } from '@/config';
 import { format, utcToZonedTime } from 'date-fns-tz';
+export const runtime = "experimental-edge";
 
 const generateRssItem = (post) => {
 
