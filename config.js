@@ -1,7 +1,7 @@
 
 // export const DOMAIN = "https://dirmatech.com";
-export const DOMAIN = "http://localhost:3000";
-export const BACKEND = "http://localhost:8000"
+export const DOMAIN = "https://divyastocks.info";
+export const BACKEND = "https://divyastocks-backend.vercel.app"
 
 export const APP_DESCRIPTION = '';
 
