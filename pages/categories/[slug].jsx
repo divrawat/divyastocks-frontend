@@ -6,6 +6,7 @@ import { format } from 'date-fns';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Pagination2 from '@/components/Pagination2';
+export const runtime = "experimental-edge";
 
 const Category = ({ category, blogs, pagination, query, errorCode }) => {
     const router = useRouter();

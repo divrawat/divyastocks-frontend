@@ -8,6 +8,7 @@ import { listBlogsWithCategoriesAndTags } from '../../actions/blog';
 import { format, utcToZonedTime } from 'date-fns-tz';
 import { APP_NAME, APP_DESCRIPTION, DOMAIN } from "@/config";
 import Pagination from '@/components/Pagination';
+export const runtime = "experimental-edge";
 
 
 function convertToReadable(timestamp) {

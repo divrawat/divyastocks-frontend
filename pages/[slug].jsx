@@ -8,6 +8,7 @@ import { isAuth } from '@/actions/auth';
 import { format, utcToZonedTime } from 'date-fns-tz';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+export const runtime = "experimental-edge";
 
 const SingleBlogPost = ({ blog, errorCode, recentPosts }) => {
 

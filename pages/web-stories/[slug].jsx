@@ -5,6 +5,7 @@ import Script from 'next/script';
 import { format } from 'date-fns';
 export const config = { amp: true };
 import React from "react";
+export const runtime = "experimental-edge";
 
 const Stories = ({ story, errorCode }) => {
 
