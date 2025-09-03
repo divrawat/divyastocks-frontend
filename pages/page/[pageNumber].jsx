@@ -140,25 +140,69 @@ const BlogPage = ({ blogs, pagination, recentPosts }) => {
     const { pageNumber } = router.query;
     const currentPage = parseInt(pageNumber) || 1;
 
+
+
+
+
+    const schema = {
+        "@context": "[https://schema.org](https://schema.org)",
+        "@graph": [
+            {
+                "@type": "WebSite",
+                "name": APP_NAME,
+                "url": `${DOMAIN}/page/${currentPage}`,
+                "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": `${DOMAIN}/search?q={search_term_string}`,
+                    "query-input": "required name=search_term_string"
+                }
+            },
+            {
+                "@type": "Organization",
+                "name": APP_NAME,
+                "url": `${DOMAIN}/page/${currentPage}`,
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": `${DOMAIN}/logo.jpg`
+                },
+                "sameAs": [
+                    "https://www.instagram.com/thestockmarketindia/?hl=en",
+                    "https://x.com/stocks_channel",
+                    "https://www.youtube.com/channel/UCUP_ao_7-Yct5FcVIA4Kobg"
+
+                ]
+            }
+        ]
+    };
+
     const head = () => (
         <Head>
+            <html lang="hi" />
             <title>{`${APP_NAME} Page ${currentPage}`}</title>
             <meta name="description" content={APP_DESCRIPTION} />
-            <link rel="canonical" href={`${DOMAIN}${router.asPath}`} />
-            <meta property="og:title" content={`${APP_NAME} - Page ${currentPage}`} />
+            <link rel="canonical" href={`${DOMAIN}/page/${currentPage}`} />
+            <meta property="og:title" content={`${APP_NAME}`} />
             <meta property="og:description" content={APP_DESCRIPTION} />
             <meta property="og:type" content="website" />
-            <meta name="robots" content={currentPage === 1 ? 'index, follow' : 'noindex, follow'} />
-            <meta property="og:url" content={`${DOMAIN}${router.asPath}`} />
-            <meta property="og:site_name" content={DOMAIN} />
+            <meta name="robots" content="index, follow" />
+            <meta property="og:url" content={`${DOMAIN}/page/${currentPage}`} />
+            <meta property="og:site_name" content={`${APP_NAME}`} />
             <meta property="og:image" content={`${DOMAIN}/icon-512.png`} />
             <meta property="og:image:secure_url" content={`${DOMAIN}/icon-512.png`} />
             <meta property="og:image:type" content="image/jpg" />
-
-            {pagination?.hasPrevPage && (<link rel="prev" href={`${DOMAIN}/page/${currentPage - 1}`} />)}
-            {pagination?.hasNextPage && (<link rel="next" href={`${DOMAIN}/page/${currentPage + 1}`} />)}
+            <meta property="og:locale" content="hi_IN" />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
         </Head>
     );
+
+
+
+
+
+
+
+
+
 
     return (
         <>

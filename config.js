@@ -1,14 +1,14 @@
 
-export const DOMAIN = "http://localhost:3000";
-export const BACKEND = "http://localhost:8000"
+// export const DOMAIN = "http://localhost:3000";
+// export const BACKEND = "http://localhost:8000"
 
-// export const DOMAIN = "https://divyastocks.info";
-// export const BACKEND = "https://divyastocks-backend.vercel.app"
+export const DOMAIN = "https://divyastocks.info";
+export const BACKEND = "https://divyastocks-backend.vercel.app"
 
 export const APP_DESCRIPTION = '';
 
 // Navbar
-export const logo = <img src="/" alt="Logo" className="h-[40px] w-[50px] mr-5 md:ml-0 ml-4 md:my-0 my-1" />
+export const logo = <img src="/logo.jpg" alt="Logo" className="h-[50px] w-[50px] mr-5 md:ml-0 ml-4 md:my-0 my-1 rounded-full" />
 export const APP_NAME = 'DivyaStocks';
 export const NavbarName = "DivyaStocks";
 export const navLinks = [

@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { singleCategory } from '../../actions/category';
-import { DOMAIN, APP_NAME } from '../../config';
+import { DOMAIN, APP_NAME, APP_DESCRIPTION } from '../../config';
 import { format } from 'date-fns';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -28,28 +28,81 @@ const Category = ({ category, blogs, pagination, query, errorCode }) => {
         );
     }
 
+
+
+    const schema = {
+        "@context": "[https://schema.org](https://schema.org)",
+        "@graph": [
+            {
+                "@type": "NewsMediaOrganization",
+                "name": APP_NAME,
+                "url": DOMAIN,
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": `${DOMAIN}/logo.jpg`,
+                    "height": "50",
+                    "width": "50"
+                }
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Home",
+                        "item": `${DOMAIN}/`
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": category?.name,
+                        "item": `${DOMAIN}/categories/${query.slug}?page=${currentPage}`,
+                    }
+                ]
+            },
+            {
+                "@type": "CollectionPage",
+                "name": category?.name,
+                "description": category?.description,
+                "url": `${DOMAIN}/categories/${query.slug}?page=${currentPage}`,
+                "inLanguage": "hi-IN"
+            },
+            {
+                "@type": "WebSite",
+                "url": DOMAIN,
+                "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": {
+                        "@type": "EntryPoint",
+                        "urlTemplate": `${DOMAIN}/search?s={search_term_string}`
+                    },
+                    "query-input": "required name=search_term_string"
+                }
+            }
+        ]
+    };
+
+
+
+
+
+
     const head = () => (
         <Head>
             <title>{`${category.name} - Page ${currentPage} | ${APP_NAME}`}</title>
-            <meta name="description" content={`Best programming tutorials on ${category.name} - Page ${currentPage}`} />
+            <meta name="description" content={APP_DESCRIPTION} />
             <link rel="canonical" href={`${DOMAIN}/categories/${query.slug}?page=${currentPage}`} />
             <meta property="og:title" content={`${category.name} - Page ${currentPage} | ${APP_NAME}`} />
-            <meta name="robots" content={currentPage === 1 ? 'index, follow' : 'noindex, follow'} />
-            <meta property="og:description" content={`Best programming tutorials on ${category.name}`} />
+            <meta name="robots" content="index, follow" />
+            <meta property="og:description" content={APP_DESCRIPTION} />
             <meta property="og:type" content="website" />
             <meta property="og:url" content={`${DOMAIN}/categories/${query.slug}?page=${currentPage}`} />
             <meta property="og:site_name" content={`${APP_NAME}`} />
-            <meta property="og:image" content={`${DOMAIN}/static/images/seoblog.jpg`} />
-            <meta property="og:image:secure_url" content={`${DOMAIN}/static/images/seoblog.jpg`} />
+            <meta property="og:image" content={`${DOMAIN}/logo.jpg`} />
+            <meta property="og:image:secure_url" content={`${DOMAIN}/logo.jpg`} />
             <meta property="og:image:type" content="image/jpg" />
-
-            {/* Pagination meta tags */}
-            {pagination?.hasPrevPage && (
-                <link rel="prev" href={`${DOMAIN}/categories/${query.slug}?page=${currentPage - 1}`} />
-            )}
-            {pagination?.hasNextPage && (
-                <link rel="next" href={`${DOMAIN}/categories/${query.slug}?page=${currentPage + 1}`} />
-            )}
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
         </Head>
     );
 
@@ -78,8 +131,8 @@ const Category = ({ category, blogs, pagination, query, errorCode }) => {
 
                     <div className="absolute top-3 left-3">
                         <span className=" flex text-white text-xs font-medium rounded-full">
-                            {post?.categories.map((cat) => {
-                                return <div className="mr-1 p-1 bg-red-600 rounded-md"><a href={`${DOMAIN}/categories/${cat?.slug}`}>{cat?.name}</a></div>
+                            {post?.categories.map((cat, i) => {
+                                return <div key={i} className="mr-1 p-1 bg-red-600 rounded-md"><a href={`${DOMAIN}/categories/${cat?.slug}`}>{cat?.name}</a></div>
                             })}
                         </span>
                     </div>

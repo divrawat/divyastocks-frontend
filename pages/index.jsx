@@ -137,24 +137,77 @@ export default function Home({ initialBlogs, initialPagination, recentPosts }) {
   const [pagination, setPagination] = useState(initialPagination);
   const currentPage = parseInt(router.query.pagenumber) || 1;
 
+
+  const schema = {
+    "@context": "[https://schema.org](https://schema.org)",
+    "@graph": [
+      {
+        "@type": "NewsMediaOrganization",
+        "name": APP_NAME,
+        "url": DOMAIN,
+        "logo": {
+          "@type": "ImageObject",
+          "url": `${DOMAIN}/logo.jpg`,
+          "height": "50",
+          "width": "50"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "url": DOMAIN,
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": `${DOMAIN}/search?s={search_term_string}`
+          },
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "WebPage",
+        "name": APP_NAME,
+        "description": APP_DESCRIPTION,
+        "url": DOMAIN
+      },
+      {
+        "@type": "LocalBusiness",
+        "name": APP_NAME,
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Mohali",
+          "addressRegion": "Punjab",
+          "postalCode": "140301",
+          "addressCountry": "India"
+        },
+        "telephone": "9988177179",
+        "openingHours": ["Mo-Su 00:00-23:59"],
+        "description": APP_DESCRIPTION,
+        "image": `${DOMAIN}/logo.jpg`,
+        "url": DOMAIN
+      }
+    ]
+  };
+
+
+
   const head = () => (
     <Head>
+      <html lang="hi" />
       <title>{`${APP_NAME} `}</title>
       <meta name="description" content={APP_DESCRIPTION} />
-      <link rel="canonical" href={`${DOMAIN}${router.asPath}`} />
-      <meta property="og:title" content={`${APP_NAME} - Page ${currentPage}`} />
+      <link rel="canonical" href={`${DOMAIN}`} />
+      <meta property="og:title" content={`${APP_NAME}`} />
       <meta property="og:description" content={APP_DESCRIPTION} />
       <meta property="og:type" content="website" />
       <meta name="robots" content="index, follow" />
-      <meta property="og:url" content={`${DOMAIN}${router.asPath}`} />
-      <meta property="og:site_name" content={DOMAIN} />
+      <meta property="og:url" content={`${DOMAIN}`} />
+      <meta property="og:site_name" content={`${APP_NAME}`} />
       <meta property="og:image" content={`${DOMAIN}/icon-512.png`} />
       <meta property="og:image:secure_url" content={`${DOMAIN}/icon-512.png`} />
       <meta property="og:image:type" content="image/jpg" />
-
-      {currentPage > 1 && (<meta name="robots" content="noindex, follow" />)}
-      {pagination?.hasPrevPage && (<link rel="prev" href={`${DOMAIN}/page/?pagenumber=${currentPage - 1}`} />)}
-      {pagination?.hasNextPage && (<link rel="next" href={`${DOMAIN}/page/?pagenumber=${currentPage + 1}`} />)}
+      <meta property="og:locale" content="hi_IN" />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
     </Head>
   );
 

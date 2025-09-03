@@ -11,15 +11,10 @@ export default class MyDocument extends Document {
 
   render() {
     return (
-      <Html lang='en'>
+      <Html lang='hi'>
         <Head>
 
-
-
-
-
           {/* <script src="https://www.googletagmanager.com/gtag/js?id=G-BN0814FKHT" />
-
           <script type='text/javascript'
             dangerouslySetInnerHTML={{
               __html: `{window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-BN0814FKHT');}`

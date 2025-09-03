@@ -139,6 +139,79 @@ const SingleBlogPost = ({ blog, errorCode, recentPosts }) => {
     }
 
 
+
+
+
+
+    const schema = {
+        "@context": "[https://schema.org](https://schema.org)",
+        "@graph": [
+            {
+                "@type": "NewsArticle",
+                "mainEntityOfPage": {
+                    "@type": "WebPage",
+                    "@id": `${DOMAIN}/${blog?.slug}`
+                },
+                "headline": blog?.title,
+                "image": [blog?.photo],
+                "datePublished": blog?.date,
+                "dateModified": blog?.date,
+                "author": {
+                    "@type": "Person",
+                    "name": blog?.author
+                },
+                "publisher": {
+                    "@type": "NewsMediaOrganization",
+                    "name": APP_NAME,
+                    "logo": {
+                        "@type": "ImageObject",
+                        "url": `${DOMAIN}/logo.jpg`,
+                        "width": 50,
+                        "height": 50
+                    }
+                },
+                "description": blog?.mdesc,
+                "inLanguage": "hi-IN"
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Home",
+                        "item": `${DOMAIN}/`
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "name": blog?.title,
+                        "item": `${DOMAIN}/${blog?.slug}`
+                    }
+                ]
+            },
+            {
+                "@type": "WebSite",
+                "url": DOMAIN,
+                "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": {
+                        "@type": "EntryPoint",
+                        "urlTemplate": `${DOMAIN}/search?s={search_term_string}`
+                    },
+                    "query-input": "required name=search_term_string"
+                }
+            }
+        ]
+    };
+
+
+
+
+
+
+
+
     const head = () => (
         <Head>
             <title >{`${blog?.title} - ${APP_NAME}`}</title>
@@ -155,6 +228,7 @@ const SingleBlogPost = ({ blog, errorCode, recentPosts }) => {
             <meta property="og:image:type" content="image/jpg" />
             <meta property="article:published_time" content={blog?.date} />
             <meta property="article:modified_time" content={blog?.date} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
         </Head>
     );
 
