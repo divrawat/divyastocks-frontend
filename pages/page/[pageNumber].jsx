@@ -25,6 +25,22 @@ function convertToReadable(timestamp) {
 function BlogCard({ post }) {
 
 
+    const authorImages = {
+        "Divyanshu Rawat": "/divyanshu-rawat.webp",
+        "Ravi Pundir": "/ravi-pundir.webp",
+    };
+
+    const authorprofiles = {
+        "Divyanshu Rawat": "divyanshu-rawat",
+        "Ravi Pundir": "ravi-pundir",
+    };
+
+    const authorprofile = authorprofiles[post?.author]
+    const imageSrc = authorImages[post?.author] || "/default-avatar.webp";
+
+
+
+
     return (
         <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full flex flex-col">
 
@@ -62,12 +78,12 @@ function BlogCard({ post }) {
                     <div className="flex items-center">
                         <div className="w-6 h-6 bg-gray-300 rounded-full flex items-center justify-center mr-2">
                             <span className="text-xs font-medium text-gray-600">
-                                <img src="/divyanshu.png" alt="" className="rounded-full" />
+                                <img src={imageSrc} alt="" className="rounded-full" />
                             </span>
 
                         </div>
                         <span className="text-xs font-medium text-gray-700">
-                            {post?.author}
+                            <a href={`${DOMAIN}/profile/${authorprofile}`}> {post?.author}</a>
                         </span>
                     </div>
 

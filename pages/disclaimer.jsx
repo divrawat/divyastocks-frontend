@@ -36,7 +36,7 @@ const Disclaimer = () => {
 
                         <h1 className="text-center p-3 font-bold text-3xl">Disclaimer</h1>
 
-                        <p className="mt-2 mb-[40px]">Thank you for visiting <Link href="/">DirmaTech</Link>. By using our website, you agree to comply with and be bound by the following disclaimer. If you do not agree with any part of this disclaimer, please do not use our website.</p>
+                        <p className="mt-2 mb-[40px]">Thank you for visiting <Link href="/">Divyastocks</Link>. By using our website, you agree to comply with and be bound by the following disclaimer. If you do not agree with any part of this disclaimer, please do not use our website.</p>
 
                         <h2 className="text-2xl font-bold mb-6">1. Content Accuracy</h2>
                         <p className="mt-2 mb-[40px]">While we strive to provide accurate and up-to-date information on our website, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability with respect to the website or the information, products, services, or related graphics contained on the website for any purpose. Any reliance you place on such information is therefore strictly at your own risk.</p>

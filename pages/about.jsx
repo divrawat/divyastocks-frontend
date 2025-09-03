@@ -24,14 +24,17 @@ const About = () => {
     );
 
     const paragraphs = [
-        "Welcome to DirmaTech, where coding meets creativity! Founded with a passion for programming and a commitment to empowering learners of all levels, we strive to be your go-to destination for all things related to software development and technology.",
-        "At DirmaTech, we believe that coding is not just a skill but an art form. Whether you're a beginner taking your first steps into the world of programming or an experienced developer looking to sharpen your skills, we provide the resources, tools, and community support you need to succeed.",
-        "Our mission is to make learning to code accessible, engaging, and fun for everyone. We offer a diverse range of tutorials, articles, and projects covering various programming languages, frameworks, and technologies. From web development and mobile app creation to data science and machine learning, we've got you covered.",
-        "What sets us apart is our commitment to creativity. We believe that coding is not just about writing lines of code but also about solving problems, expressing ideas, and building innovative solutions. That's why we emphasize not only the technical aspects of programming but also the creative and problem-solving aspects.",
-        "At DirmaTech, we understand that learning to code can sometimes feel daunting. That's why we've created a supportive community where learners can connect, share knowledge, and inspire each other. Whether you're seeking guidance on a tricky concept or looking for feedback on your latest project, you'll find a welcoming community ready to help.",
-        "Join us on our journey to unlock the power of code and unleash your creativity. Whether you're here to learn, to teach, or simply to explore, we're excited to have you as part of our community.",
-        "Divyanshu Rawat",
-        "Founder, dirmatech.com"
+        "दिव्यास्टॉक्स में आपका स्वागत है - वित्त और शेयर बाज़ारों की तेज़ी से बदलती दुनिया में आपका विश्वसनीय मार्गदर्शक। निवेशकों, व्यापारियों और वित्तीय उत्साही लोगों के लिए बनाया गया, दिव्यस्टॉक्स सटीक, व्यावहारिक और व्यावहारिक बाज़ार समाचार और विश्लेषण प्रदान करने के लिए प्रतिबद्ध है।",
+
+        "दिव्यास्टॉक्स में, हमारा मानना ​​है कि वित्तीय साक्षरता स्मार्ट निवेश का आधार है। चाहे आप शेयर बाज़ार की मूल बातें समझने वाले शुरुआती हों या नवीनतम रुझानों पर नज़र रखने वाले अनुभवी व्यापारी, हमारा प्लेटफ़ॉर्म आपकी यात्रा में सहायता के लिए मूल्यवान उपकरण, अंतर्दृष्टि और शिक्षा प्रदान करता है।",
+
+        "हम बाज़ार समाचार, कंपनी की आय, आर्थिक संकेतक, निवेश रणनीतियाँ और पोर्टफोलियो प्रबंधन सहित वित्तीय विषयों की एक विस्तृत श्रृंखला को कवर करते हैं। रीयल-टाइम अपडेट और गहन विश्लेषण के साथ, दिव्यस्टॉक्स आपको बाज़ारों की गति और आपके पैसे के लिए इसके महत्व के बारे में सूचित रखता है।",
+
+        "हमारा मिशन वित्तीय जानकारी को सुलभ और समझने योग्य बनाना है। हम जटिल विषयों को स्पष्ट और संक्षिप्त सामग्री में विभाजित करते हैं जो आपको आत्मविश्वास के साथ सूचित निर्णय लेने में सक्षम बनाती है - चाहे आप दैनिक ट्रेडिंग या दीर्घकालिक विकास की योजना बनाना।",
+
+        "दिव्यास्टॉक्स को हमारी स्पष्टता, सत्यनिष्ठा और प्रासंगिकता पर केंद्रित होना ही हमारी विशिष्टता है। हम केवल समाचार ही नहीं देते - हम आँकड़ों के पीछे के 'कारण' की व्याख्या करते हैं, संभावित प्रभावों पर प्रकाश डालते हैं, और ऐसे दृष्टिकोण प्रस्तुत करते हैं जो आपको व्यापक तस्वीर देखने में मदद करते हैं।",
+
+        "दिव्यास्टॉक्स समुदाय में शामिल हों और अपने वित्तीय भविष्य पर नियंत्रण रखें। चाहे आप शेयर बाजार के नवीनतम घटनाक्रमों से अवगत रहने, नई निवेश रणनीतियों को सीखने, या समान विचारधारा वाले निवेशकों के बढ़ते नेटवर्क से जुड़ने के लिए यहाँ आए हों - आप सही जगह पर आए हैं।",
     ];
 
 
