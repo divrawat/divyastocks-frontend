@@ -49,9 +49,10 @@ const CreateBlogPage = () => {
         photo: '',
         loading: false,
         publishtext: 'Publish',
+        author: 'Divyanshu Rawat'
     });
 
-    const { error, success, formData, loading, publishtext, draft, title, mtitle, mdesc, slug, photo, userId } = values;
+    const { error, success, formData, loading, publishtext, draft, title, mtitle, mdesc, slug, photo, userId, author } = values;
     const token = getCookie('token');
 
     const publishBlog = (e, status) => {
@@ -78,7 +79,7 @@ const CreateBlogPage = () => {
                     setTimeout(redirect, 500);
                 }
 
-                setValues({ ...values, loading: false, title: '', mtitle: '', mdesc: '', slug: '', error: '', photo: '', success: `` });
+                setValues({ ...values, loading: false, title: '', mtitle: '', mdesc: '', slug: '', error: '', photo: '', success: ``, author: '' });
                 setBody('');
                 setCategories([]);
             }
@@ -105,7 +106,7 @@ const CreateBlogPage = () => {
             if (data.error) {
                 setValues({ ...values, error: data.error });
             } else {
-                setCategories(data);
+                setCategories(data?.categories);
             }
         });
     };
@@ -210,6 +211,22 @@ const CreateBlogPage = () => {
                             <br />
                             {/* <button onClick={e => publishBlog(e, 'Draft')} type="submit" className="bg-slate-900 text-white tracking-wider px-3  py-2 font-semibold rounded-md hover:shadow-md transition-transform hover:scale-105 hover:text-[yellow] active:scale-95 text-sm mt-2">{draft}</button> */}
                         </div>
+
+
+
+
+                        <div className="mt-5">
+                            <div className="font-semibold">Author</div>
+                            <select id="author" className="form-control p-2" onChange={handleChange('author')} value={author} required>
+                                <option value="Divyanshu Rawat">Divyanshu Rawat</option>
+                                <option value="Ravi Pundir">Ravi Pundir</option>
+                            </select>
+                        </div>
+
+
+
+
+
 
                         <div className="mt-5">
                             <DatePicker id='date' autoComplete="off" onChange={handleDateChange} className="w-[80%] border bg-gray-50 border-gray-300 outline-none cursor-pointer px-2 py-1.5 text-[13px] " selected={values.date} minDate={new Date()} showYearDropdown dateFormat="dd MMM, yyyy" placeholderText="Date" />

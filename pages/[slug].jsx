@@ -8,6 +8,13 @@ import { isAuth } from '@/actions/auth';
 import { format, utcToZonedTime } from 'date-fns-tz';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import AuthorBox from '@/components/AuthorBox';
+import { FaTelegram } from "react-icons/fa";
+import { FaFacebook } from "react-icons/fa";
+import { FaTwitter } from "react-icons/fa";
+import { IoLogoWhatsapp } from "react-icons/io";
+import { FaRedditAlien } from "react-icons/fa";
+import slugify from 'slugify';
 export const runtime = "experimental-edge";
 
 const SingleBlogPost = ({ blog, errorCode, recentPosts }) => {
@@ -31,6 +38,52 @@ const SingleBlogPost = ({ blog, errorCode, recentPosts }) => {
 
     const [user, setUser] = useState(null);
     useEffect(() => { setUser(isAuth()) }, []);
+
+
+    const SocialMedia = () => {
+
+        const postUrl = `${DOMAIN}/${blog?.slug}`;
+        const encodedTitle = `${blog?.title}`;
+        const encodedUrl = postUrl;
+
+        const whatsappUrl = `https://api.whatsapp.com/send?text=${encodedTitle} ${encodedUrl}`;
+        const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
+        const twitterUrl = `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`;
+        const telegramUrl = `https://telegram.me/share/url?url=${encodedUrl}&text=${encodedTitle}`;
+        const redditUrl = `https://www.reddit.com/submit?url=${encodedUrl}&title=${encodedTitle}`;
+
+        return (
+            <section className="flex gap-4 flex-wrap text-white mb-3">
+
+
+                <a href={facebookUrl} className="flex gap-1 items-center bg-blue-600 rounded-md px-2 py-1">
+                    <span><FaFacebook /></span>
+                    <span className={` text-[12px]`}>FaceBook</span>
+                </a>
+
+                <a href={redditUrl} className="flex gap-1 items-center bg-orange-500 rounded-md px-2 py-1">
+                    <span className="pb-[3px]"><FaRedditAlien /></span>
+                    <span className={` text-[12px]`}>Reddit</span>
+                </a>
+
+                <a href={twitterUrl} className="flex gap-1 items-center bg-blue-500 rounded-md px-2 py-1">
+                    <span><FaTwitter /></span>
+                    <span className={`text-[12px]`}>Twitter</span>
+                </a>
+
+                <a href={telegramUrl} className="flex gap-1 items-center bg-blue-600 rounded-md px-2 py-1">
+                    <span><FaTelegram /></span>
+                    <span className={` text-[12px]`}>Telegram</span>
+                </a>
+
+                <a href={whatsappUrl} className="flex gap-1 items-center bg-green-500 rounded-md px-2 py-1">
+                    <span><IoLogoWhatsapp /></span>
+                    <span className={` text-[12px]`}>WhatsApp</span>
+                </a>
+
+            </section>
+        )
+    }
 
 
     const showBlogCategories = () => {
@@ -114,7 +167,7 @@ const SingleBlogPost = ({ blog, errorCode, recentPosts }) => {
 
             <main className='bg-[white]'>
                 <div className='max-w-[1400px] mx-auto pt-5 flex flex-col lg:flex-row gap-8 px-4'>
-                    {/* Main Content */}
+
                     <article className='lg:w-3/4'>
                         <div className='md:p-1 p-5'>
                             <div>
@@ -131,14 +184,16 @@ const SingleBlogPost = ({ blog, errorCode, recentPosts }) => {
                                             </div>
                                         )}
                                         <header>
-                                            <h1 className='font-extrabold md:text-4xl text-3xl mb-3 dark:text-[whitesmoke]' style={{ wordSpacing: "5px" }}>
+                                            {SocialMedia()}
+                                            <h1 className='font-extrabold md:text-[35px] text-[25px] mb-3 dark:text-[whitesmoke]' style={{ wordSpacing: "5px" }}>
                                                 {blog?.title}
                                             </h1>
+
                                             <section>
                                                 {blog?.formattedDate} &nbsp; by &nbsp;
-                                                {blog?.postedBy && blog?.postedBy.name && blog?.postedBy.username ? (
-                                                    <Link className='underline hover:text-[blue]' href={`/profile/${blog?.postedBy?.username}`}>
-                                                        {blog?.postedBy?.name}
+                                                {blog?.author ? (
+                                                    <Link className='underline hover:text-[blue]' href={`/profile/${slugify(blog?.author).toLowerCase()}`}>
+                                                        {blog?.author}
                                                     </Link>
                                                 ) : (
                                                     <span>User</span>
@@ -156,21 +211,28 @@ const SingleBlogPost = ({ blog, errorCode, recentPosts }) => {
 
                                     <section className="postcontent">
                                         <div dangerouslySetInnerHTML={{ __html: blog?.body }} />
-                                        <div style={{ textAlign: "center" }}>
+                                        <div>
                                             {showBlogCategories()}
                                         </div>
                                     </section>
                                 </section>
                             </div>
                         </div>
+
+                        <section className='my-10'>
+                            <div className='text-[25px] font-bold'>About The Author</div>
+                            <AuthorBox selectedAuthorName={blog?.author} />
+                        </section>
+
+
                     </article>
 
 
-                    <aside className='lg:w-1/3 mt-10 ml-10'>
+                    <aside className='lg:w-1/3 mt-10 md:ml-10'>
                         <div className='bg-white dark:bg-[#1e1e1e] rounded-lg'>
-                            <aside className="lg:col-span-1">
+                            <div className="lg:col-span-1">
                                 <RecentPosts posts={recentPosts} />
-                            </aside>
+                            </div>
                         </div>
                     </aside>
                 </div>

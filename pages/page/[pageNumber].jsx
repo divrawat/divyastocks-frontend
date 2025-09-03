@@ -67,7 +67,7 @@ function BlogCard({ post }) {
 
                         </div>
                         <span className="text-xs font-medium text-gray-700">
-                            {post?.postedBy?.name}
+                            {post?.author}
                         </span>
                     </div>
 

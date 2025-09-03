@@ -65,7 +65,7 @@ const AllBlogs = () => {
     const fetchData = async () => {
         try {
             const data = await list(currentPage, searchQuery, token); setblogs(data?.data); setblogscount(data?.totalBlogs)
-            console.log(data.data);
+            //console.log(data.data);
         } catch (error) { console.error('Error fetching Blogs:', error); }
     };
 

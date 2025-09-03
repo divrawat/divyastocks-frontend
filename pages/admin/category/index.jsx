@@ -73,7 +73,7 @@ const Category = () => {
         getCategories().then(data => {
             if (data.error) { console.log(data.error); }
             else {
-                setValues({ ...values, categories: data });
+                setValues({ ...values, categories: data?.categories });
             }
         });
     };

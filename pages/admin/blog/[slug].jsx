@@ -32,11 +32,12 @@ const EditBlogPage = () => {
         date: '',
         draft: 'Save Draft',
         photo: '',
+        author: '',
         loading: false,
         updatetext: 'Update',
     });
 
-    const { error, success, loading, formData, title, draft, updatetext, mtitle, mdesc, slug, userId, date, photo } = values;
+    const { error, success, loading, formData, title, draft, updatetext, mtitle, mdesc, slug, userId, date, photo, author } = values;
     const token = getCookie('token');
 
     useEffect(() => {
@@ -60,7 +61,7 @@ const EditBlogPage = () => {
             } else {
                 setValues({ ...values, loading: false, success: '' });
                 if (status === 'Draft') { toast.success(`"${data.title}" is saved as draft`); }
-                if (status === 'Publish') { toast.success(`A new blog titled "${data.title}" is Updated`); }
+                if (status === 'Publish') { toast.success(`Blog titled "${data.title}" is Updated`); }
 
                 let postslug = slugify(data.slug).toLowerCase();
                 function redirect() { Router.push(`/${postslug}`); }
@@ -72,24 +73,26 @@ const EditBlogPage = () => {
     const initBlog = () => {
         if (router.query.slug) {
             singleBlog(router?.query?.slug).then(data => {
+
                 if (!data) {
                     if (!isAuth()) { Router.push(`/signin`); }
                     else if (isAuth().role == 1) { Router.push(`/admin`); }
                     else if (isAuth().role !== 1) { Router.push(`/`); }
                 } else {
-                    const dateFromString = new Date(Date.parse(data?.date));
+                    const dateFromString = new Date(Date.parse(data?.data?.date));
 
-                    setValues({ ...values, title: data?.title, mtitle: data?.mtitle, date: dateFromString, photo: data?.photo, slug: data?.slug, mdesc: data?.mdesc });
-                    setBody(data?.body);
-                    setCategoriesArray(data?.categories);
+                    setValues({ ...values, title: data?.data?.title, author: data?.data?.author, mtitle: data?.data?.mtitle, date: dateFromString, photo: data?.data?.photo, slug: data?.data?.slug, mdesc: data?.data?.mdesc });
+                    setBody(data?.data?.body);
+                    setCategoriesArray(data?.data?.categories);
                     formData.set('userId', isAuth()?._id);
-                    formData.set('title', data?.title);
-                    formData.set('mtitle', data?.mtitle);
-                    formData.set('mdesc', data?.mdesc);
-                    formData.set('slug', data?.slug);
+                    formData.set('title', data?.data?.title);
+                    formData.set('mtitle', data?.data?.mtitle);
+                    formData.set('mdesc', data?.data?.mdesc);
+                    formData.set('slug', data?.data?.slug);
                     formData.set('date', dateFromString);
-                    formData.set('photo', data?.photo);
-                    formData.set('categories', data?.categories?.map(c => c?._id).join(','));
+                    formData.set('photo', data?.data?.photo);
+                    formData.set('author', data?.data?.author);
+                    formData.set('categories', data?.data?.categories?.map(c => c?._id).join(','));
                 }
             });
         }
@@ -106,7 +109,7 @@ const EditBlogPage = () => {
             if (data.error) {
                 setValues({ ...values, error: data.error });
             } else {
-                setCategories(data);
+                setCategories(data?.categories);
             }
         });
     };
@@ -204,6 +207,16 @@ const EditBlogPage = () => {
                         <div className="mt-5">
                             <DatePicker id='date' autoComplete="off" onChange={handleDateChange} className="w-[80%] border bg-gray-50 border-gray-300 outline-none cursor-pointer px-2 py-1.5 text-[13px]" selected={values.date} minDate={new Date()} showYearDropdown dateFormat="dd MMM, yyyy" placeholderText="Date" />
                         </div>
+
+
+                        <div className="mt-5">
+                            <div className="font-semibold">Author</div>
+                            <select id="author" className="form-control p-2 cursor-pointer outline-none" onChange={handleChange('author')} value={author} required>
+                                <option value="Divyanshu Rawat">Divyanshu Rawat</option>
+                                <option value="Ravi Pundir">Ravi Pundir</option>
+                            </select>
+                        </div>
+
 
                         <div className="mt-5">
                             <div className="font-semibold">Title</div>

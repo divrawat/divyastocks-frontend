@@ -27,8 +27,8 @@ function BlogCard({ post }) {
 
         <div className="absolute top-3 left-3">
           <span className=" flex text-white text-xs font-medium rounded-full">
-            {post?.categories.map((cat) => {
-              return <div className="mr-1 p-1 bg-red-600 rounded-md"><a href={`${DOMAIN}/categories/${cat?.slug}`}>{cat?.name}</a></div>
+            {post?.categories.map((cat, i) => {
+              return <div className="mr-1 p-1 bg-red-600 rounded-md" key={i}><a href={`${DOMAIN}/categories/${cat?.slug}`}>{cat?.name}</a></div>
             })}
           </span>
         </div>
@@ -61,7 +61,7 @@ function BlogCard({ post }) {
 
             </div>
             <span className="text-xs font-medium text-gray-700">
-              {post?.postedBy?.name}
+              {post?.author}
             </span>
           </div>
 
