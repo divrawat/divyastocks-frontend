@@ -193,7 +193,6 @@ export default function Home({ initialBlogs, initialPagination, recentPosts }) {
 
   const head = () => (
     <Head>
-      <html lang="hi" />
       <title>{`${APP_TITLE} `}</title>
       <meta name="description" content={APP_DESCRIPTION} />
       <link rel="canonical" href={`${DOMAIN}`} />
