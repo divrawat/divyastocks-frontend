@@ -105,7 +105,7 @@ const AllBlogs = () => {
 
             <input type="search" id="default-search" className="outline-none block w-full p-3 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search Articles"
                 value={searchQuery} onChange={handleChangeSearch} />
-                
+
 
             {/* <div className="flex justify-center items-center gap-10 mt-5 text-sm ">
                 <button className="px-3 py-1 bg-slate-900 rounded text-[12px] hover:scale-105 text-[yellow] active:scale-95 cursor-pointer transition-transform" onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>Previous</button>
@@ -181,7 +181,7 @@ const AllBlogs = () => {
                     <input autoComplete="off" value={inputValue} onChange={handleInputChange} required name="name" type="text" placeholder="Name" className="border border-red-500 w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none rounded-md" />
 
                     <div className="flex justify-end mt-8">
-                        <button disabled={inputValue !== currentuserID.title} onClick={() => handleConfirmDelete(currentuserID.slug)} className={`text-sm bg-red-600 mr-2 hover:bg-red-700 hover:scale-105 active:scale-95 transition-transform text-white font-semibold py-2 px-4 rounded ${inputValue !== currentuserID.title ? 'opacity-50 cursor-not-allowed' : ''}`}>
+                        <button disabled={inputValue !== currentuserID.title} onClick={() => handleConfirmDelete(currentuserID.slug)} className={`text-sm bg-[#0f5c7d] mr-2 hover:bg-[#0A4158] hover:scale-105 active:scale-95 transition-transform text-white font-semibold py-2 px-4 rounded ${inputValue !== currentuserID.title ? 'opacity-50 cursor-not-allowed' : ''}`}>
                             Delete
                         </button>
                         <button className="bg-slate-800 text-sm hover:bg-slate-900 hover:scale-105 active:scale-95 transition-transform text-white font-semibold py-2 px-4 rounded mr-2"

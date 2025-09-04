@@ -10,7 +10,7 @@ export default function Footer() {
 
     return (
 
-        <footer className=" dark:bg-[black] bg-red-600 dark:text-[whitesmoke] text-[whitesmoke]">
+        <footer className=" dark:bg-[black] bg-[#0f5c7d] dark:text-[whitesmoke] text-[whitesmoke]">
             <div className="py-2 max-w-[1100px] mx-auto">
                 <div className="container mx-auto md:flex flex-wrap justify-between items-center">
                     <div className="md:flex items-center text-center">

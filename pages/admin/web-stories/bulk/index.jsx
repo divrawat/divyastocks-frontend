@@ -132,7 +132,7 @@ const WebStoryBulk = () => {
 
                     <div className="flex justify-end mt-8">
                         <button onClick={() => confirmdraft()}
-                            className={`text-sm bg-red-600 mr-2 hover:bg-red-700 hover:scale-105 active:scale-95 transition-transform text-white font-semibold py-2 px-4 rounded ${inputValue !== 'I want to update all Web Stories to draft' ? 'opacity-50 cursor-not-allowed' : ''}`}
+                            className={`text-sm bg-[#0f5c7d] mr-2 hover:bg-[#0A4158] hover:scale-105 active:scale-95 transition-transform text-white font-semibold py-2 px-4 rounded ${inputValue !== 'I want to update all Web Stories to draft' ? 'opacity-50 cursor-not-allowed' : ''}`}
                             disabled={inputValue !== 'I want to update all Web Stories to draft'}
                         >
                             Yes
@@ -171,7 +171,7 @@ const WebStoryBulk = () => {
 
                     <div className="flex justify-end mt-8">
                         <button onClick={() => confirmdraft0()}
-                            className={`text-sm bg-red-600 mr-2 hover:bg-red-700 hover:scale-105 active:scale-95 transition-transform text-white font-semibold py-2 px-4 rounded ${inputValue !== 'I want to update all Web Stories to publish' ? 'opacity-50 cursor-not-allowed' : ''}`}
+                            className={`text-sm bg-[#0f5c7d] mr-2 hover:bg-[#0A4158] hover:scale-105 active:scale-95 transition-transform text-white font-semibold py-2 px-4 rounded ${inputValue !== 'I want to update all Web Stories to publish' ? 'opacity-50 cursor-not-allowed' : ''}`}
                             disabled={inputValue !== 'I want to update all Web Stories to publish'}
                         >
                             Yes

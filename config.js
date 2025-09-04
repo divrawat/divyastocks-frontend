@@ -11,6 +11,7 @@ export const APP_TITLE = 'DivyaStocks: ताज़ा शेयर बाजा
 
 // Navbar
 export const logo = <img src="/logo.jpg" alt="Logo" className="h-[50px] w-[50px] mr-5 md:ml-0 ml-4 md:my-0 my-1 rounded-full" />
+export const logolink = `${DOMAIN}/logo.jpg`
 export const APP_NAME = 'DivyaStocks';
 export const NavbarName = "DivyaStocks";
 

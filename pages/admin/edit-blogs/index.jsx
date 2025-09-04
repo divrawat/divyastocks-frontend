@@ -179,7 +179,7 @@ const AllBlogs = () => {
                     <input autoComplete="off" value={inputValue} onChange={handleInputChange} required name="name" type="text" placeholder="Name" className="border border-red-500 w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none rounded-md" />
 
                     <div className="flex justify-end mt-8">
-                        <button disabled={inputValue !== currentuserID.title} onClick={() => handleConfirmDelete(currentuserID.slug)} className={`text-sm bg-red-600 mr-2 hover:bg-red-700 hover:scale-105 active:scale-95 transition-transform text-white font-semibold py-2 px-4 rounded ${inputValue !== currentuserID.title ? 'opacity-50 cursor-not-allowed' : ''}`}>
+                        <button disabled={inputValue !== currentuserID.title} onClick={() => handleConfirmDelete(currentuserID.slug)} className={`text-sm bg-[#0f5c7d] mr-2 hover:bg-[#0A4158] hover:scale-105 active:scale-95 transition-transform text-white font-semibold py-2 px-4 rounded ${inputValue !== currentuserID.title ? 'opacity-50 cursor-not-allowed' : ''}`}>
                             Delete
                         </button>
                         <button className="bg-slate-800 text-sm hover:bg-slate-900 hover:scale-105 active:scale-95 transition-transform text-white font-semibold py-2 px-4 rounded mr-2"

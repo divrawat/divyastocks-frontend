@@ -27,7 +27,7 @@ function BlogCard({ post }) {
                 <div className="absolute top-3 left-3">
                     <span className=" flex text-white text-xs font-medium rounded-full">
                         {post?.categories.map((cat) => {
-                            return <div className="mr-1 p-1 bg-red-600 rounded-md">{cat?.name}</div>
+                            return <div className="mr-1 p-1 bg-[#0f5c7d] rounded-md">{cat?.name}</div>
                         })}
                     </span>
                 </div>
@@ -65,7 +65,7 @@ function BlogCard({ post }) {
                         </span>
                     </div>
 
-                    <button className="text-red-600 hover:text-red-700 text-xs font-medium">
+                    <button className="text-[#0f5c7d] hover:text-[#0A4158] text-xs font-medium">
                         <a href={post?.slug}>  Read More →</a>
                     </button>
                 </div>

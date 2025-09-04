@@ -78,7 +78,7 @@ const Admin = () => {
                             <label className="block mt-3 font-semibold"> Password </label>
                             <input value={password} onChange={handleChange('password')} name="password" type="password" placeholder="Password" className="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md" />
                             <div className="flex justify-between items-baseline">
-                                <button type="submit" className="mt-4  bg-red-500 text-white py-2 px-6 rounded-md hover:bg-red-600 ">Login</button>
+                                <button type="submit" className="mt-4  bg-red-500 text-white py-2 px-6 rounded-md hover:bg-[#0f5c7d] ">Login</button>
                                 {/* <a href="#" className="text-sm hover:underline">Forgot password?</a> */}
                             </div>
                         </div>

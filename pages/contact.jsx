@@ -113,7 +113,7 @@ export default function Contact() {
                         </div>
 
                         {status && (
-                            <div className={`text-center text-sm font-medium py-2 px-4 rounded-lg ${status.includes('✅') ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+                            <div className={`text-center text-sm font-medium py-2 px-4 rounded-lg ${status.includes('✅') ? 'bg-green-100 text-green-700' : 'bg-red-100 text-[#0A4158]'}`}>
                                 {status}
                             </div>
                         )}

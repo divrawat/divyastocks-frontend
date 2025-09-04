@@ -1,5 +1,14 @@
+// pages/_app.js
 import "@/styles/globals.css";
+import { Inter } from "next/font/google";
+
+// Load Google Font
+const inter = Inter({ subsets: ["latin"] });
 
 export default function App({ Component, pageProps }) {
-  return <Component {...pageProps} />;
+  return (
+    <main className={inter.className}>
+      <Component {...pageProps} />
+    </main>
+  );
 }

@@ -50,7 +50,7 @@ function BlogCard({ post }) {
                 <div className="absolute top-3 left-3">
                     <span className=" flex text-white text-xs font-medium rounded-full">
                         {post?.categories.map((cat) => {
-                            return <div className="mr-1 p-1 bg-red-600 rounded-md">{cat?.name}</div>
+                            return <div className="mr-1 p-1 bg-[#0f5c7d] rounded-md">{cat?.name}</div>
                         })}
                     </span>
                 </div>
@@ -87,7 +87,7 @@ function BlogCard({ post }) {
                         </span>
                     </div>
 
-                    <button className="text-red-600 hover:text-red-700 text-xs font-medium">
+                    <button className="text-[#0f5c7d] hover:text-[#0A4158] text-xs font-medium">
                         <a href={`${DOMAIN}/${post?.slug}`}>  Read More →</a>
                     </button>
                 </div>
@@ -114,7 +114,7 @@ function RecentPosts({ posts }) {
 
                             <div className="flex-1 min-w-0">
                                 <h3 className="text-sm font-semibold text-gray-900 transition-colors line-clamp-2">
-                                    <a href={`${DOMAIN}/${post?.slug}`} className="hover:text-red-700">{post.title}</a>
+                                    <a href={`${DOMAIN}/${post?.slug}`} className="hover:text-[#0A4158]">{post.title}</a>
                                 </h3>
                                 <p className="text-xs text-gray-500 mt-1">
                                     {convertToReadable(post.date)}
@@ -126,7 +126,7 @@ function RecentPosts({ posts }) {
             </div>
 
             <div className="mt-6 pt-4 border-t border-gray-200">
-                <button className="w-full text-center text-red-600 hover:text-red-700 text-sm font-medium">
+                <button className="w-full text-center text-[#0f5c7d] hover:text-[#0A4158] text-sm font-medium">
                     View All Posts →
                 </button>
             </div>

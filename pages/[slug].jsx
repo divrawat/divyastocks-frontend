@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { singleBlog, allblogs } from '../actions/blog';
-import { DOMAIN, APP_NAME } from "../config";
+import { DOMAIN, APP_NAME, logolink, APP_DESCRIPTION } from "../config";
 import SmallCard from '@/components/SmallCard';
 import { isAuth } from '@/actions/auth';
 import { format, utcToZonedTime } from 'date-fns-tz';
@@ -19,6 +19,13 @@ export const runtime = "experimental-edge";
 
 const SingleBlogPost = ({ blog, errorCode, recentPosts }) => {
 
+    const title = blog?.title;
+    const slug = blog?.slug;
+    const url = `${DOMAIN}/${blog?.slug}`
+    const description = blog?.mdesc;
+    const photo = blog?.photo;
+    const date = blog?.date;
+    const author = blog?.author;
 
     if (errorCode) {
         return (
@@ -42,15 +49,14 @@ const SingleBlogPost = ({ blog, errorCode, recentPosts }) => {
 
     const SocialMedia = () => {
 
-        const postUrl = `${DOMAIN}/${blog?.slug}`;
-        const encodedTitle = `${blog?.title}`;
-        const encodedUrl = postUrl;
 
-        const whatsappUrl = `https://api.whatsapp.com/send?text=${encodedTitle} ${encodedUrl}`;
-        const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
-        const twitterUrl = `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`;
-        const telegramUrl = `https://telegram.me/share/url?url=${encodedUrl}&text=${encodedTitle}`;
-        const redditUrl = `https://www.reddit.com/submit?url=${encodedUrl}&title=${encodedTitle}`;
+
+
+        const whatsappUrl = `https://api.whatsapp.com/send?text=${title} ${url}`;
+        const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+        const twitterUrl = `https://twitter.com/intent/tweet?text=${title}&url=${url}`;
+        const telegramUrl = `https://telegram.me/share/url?text=${title}&url=${url}`;
+        const redditUrl = `https://www.reddit.com/submit?title=${title}&url=${url}`;
 
         return (
             <section className="flex gap-4 flex-wrap text-white mb-3">
@@ -88,7 +94,7 @@ const SingleBlogPost = ({ blog, errorCode, recentPosts }) => {
 
     const showBlogCategories = () => {
         return (blog?.categories && blog?.categories?.map((c, i) => (
-            <Link key={i} href={`/categories/${c?.slug}`}><button className='bg-red-600 text-[white] m-3 hover:scale-105 transition-transform font-bold rounded py-2 px-3'  >{c?.name}</button></Link>
+            <Link key={i} href={`/categories/${c?.slug}`}><button className='bg-[#0f5c7d] text-[white] m-3 hover:scale-105 transition-transform font-bold rounded py-2 px-3'  >{c?.name}</button></Link>
         )))
     };
 
@@ -118,7 +124,7 @@ const SingleBlogPost = ({ blog, errorCode, recentPosts }) => {
 
                                 <div className="flex-1 min-w-0">
                                     <h3 className="text-sm font-semibold text-gray-900 transition-colors line-clamp-2">
-                                        <a href={`${DOMAIN}/${post?.slug}`} className="hover:text-red-700">{post.title}</a>
+                                        <a href={`${DOMAIN}/${post?.slug}`} className="hover:text-[#0A4158]">{post.title}</a>
                                     </h3>
                                     <p className="text-xs text-gray-500 mt-1">
                                         {convertToReadable(post.date)}
@@ -130,7 +136,7 @@ const SingleBlogPost = ({ blog, errorCode, recentPosts }) => {
                 </div>
 
                 <div className="mt-6 pt-4 border-t border-gray-200">
-                    <button className="w-full text-center text-red-600 hover:text-red-700 text-sm font-medium">
+                    <button className="w-full text-center text-[#0f5c7d] hover:text-[#0A4158] text-sm font-medium">
                         View All Posts →
                     </button>
                 </div>
@@ -138,75 +144,156 @@ const SingleBlogPost = ({ blog, errorCode, recentPosts }) => {
         );
     }
 
-
-
-
-
-
-    const schema = {
-        "@context": "[https://schema.org](https://schema.org)",
-        "@graph": [
-            {
-                "@type": "NewsArticle",
-                "mainEntityOfPage": {
-                    "@type": "WebPage",
-                    "@id": `${DOMAIN}/${blog?.slug}`
-                },
-                "headline": blog?.title,
-                "image": [blog?.photo],
-                "datePublished": blog?.date,
-                "dateModified": blog?.date,
-                "author": {
-                    "@type": "Person",
-                    "name": blog?.author
-                },
-                "publisher": {
-                    "@type": "NewsMediaOrganization",
-                    "name": APP_NAME,
-                    "logo": {
-                        "@type": "ImageObject",
-                        "url": `${DOMAIN}/logo.jpg`,
-                        "width": 50,
-                        "height": 50
-                    }
-                },
-                "description": blog?.mdesc,
-                "inLanguage": "hi-IN"
-            },
-            {
-                "@type": "BreadcrumbList",
-                "itemListElement": [
-                    {
-                        "@type": "ListItem",
-                        "position": 1,
-                        "name": "Home",
-                        "item": `${DOMAIN}/`
+    /*
+        
+        const schema00 = {
+            "@context": "[https://schema.org](https://schema.org)",
+            "@graph": [
+                {
+                    "@type": "NewsArticle",
+                    "mainEntityOfPage": {
+                        "@type": "WebPage",
+                        "@id": `${DOMAIN}/${blog?.slug}`
                     },
-                    {
-                        "@type": "ListItem",
-                        "position": 3,
-                        "name": blog?.title,
-                        "item": `${DOMAIN}/${blog?.slug}`
-                    }
-                ]
-            },
-            {
-                "@type": "WebSite",
-                "url": DOMAIN,
-                "potentialAction": {
-                    "@type": "SearchAction",
-                    "target": {
-                        "@type": "EntryPoint",
-                        "urlTemplate": `${DOMAIN}/search?s={search_term_string}`
+                    "headline": blog?.title,
+                    "image": [blog?.photo],
+                    "datePublished": blog?.date,
+                    "dateModified": blog?.date,
+                    "author": {
+                        "@type": "Person",
+                        "name": blog?.author
                     },
-                    "query-input": "required name=search_term_string"
+                    "publisher": {
+                        "@type": "NewsMediaOrganization",
+                        "name": APP_NAME,
+                        "logo": {
+                            "@type": "ImageObject",
+                            "url": `${DOMAIN}/logo.jpg`,
+                            "width": 50,
+                            "height": 50
+                        }
+                    },
+                    "description": blog?.mdesc,
+                    "inLanguage": "hi-IN"
+                },
+                {
+                    "@type": "BreadcrumbList",
+                    "itemListElement": [
+                        {
+                            "@type": "ListItem",
+                            "position": 1,
+                            "name": "Home",
+                            "item": `${DOMAIN}/`
+                        },
+                        {
+                            "@type": "ListItem",
+                            "position": 3,
+                            "name": blog?.title,
+                            "item": `${DOMAIN}/${blog?.slug}`
+                        }
+                    ]
+                },
+                {
+                    "@type": "WebSite",
+                    "url": DOMAIN,
+                    "potentialAction": {
+                        "@type": "SearchAction",
+                        "target": {
+                            "@type": "EntryPoint",
+                            "urlTemplate": `${DOMAIN}/search?s={search_term_string}`
+                        },
+                        "query-input": "required name=search_term_string"
+                    }
                 }
-            }
-        ]
+            ]
+        };
+    */
+
+
+
+
+
+
+    const authorprofiles = {
+        "Divyanshu Rawat": "divyanshu-rawat",
+        "Ravi Pundir": "ravi-pundir",
     };
 
+    const authorprofile = authorprofiles[author];
+    const authorlinkpage = `${DOMAIN}/profile/${authorprofile}`
 
 
+
+    const schema = [
+        {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            name: title,
+            description: description,
+            url: url,
+            keywords: "News, Market, Crypto, IPO",
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "NewsArticle",
+            mainEntityOfPage: {
+                "@type": "WebPage",
+                "@id": url,
+                description: description,
+                thumbnailUrl: photo,
+            },
+            headline: title,
+            inLanguage: "hi",
+            image: {
+                "@type": "ImageObject",
+                url: photo,
+                height: "1200",
+                width: "1200",
+            },
+            datePublished: date,
+            dateModified: date,
+            author: {
+                "@type": "Person",
+                name: author,
+                url: authorlinkpage,
+            },
+            publisher: {
+                "@type": "NewsMediaOrganization",
+                name: APP_NAME,
+                logo: {
+                    "@type": "ImageObject",
+                    url: logolink,
+                    height: "50",
+                    width: "50",
+                },
+            },
+            description: description,
+            keywords: "News, Market, Crypto, IPO",
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            name: APP_NAME,
+            address: "",
+            telephone: "9988177175",
+            openingHours: ["Mo-Su 00:00-23:59"],
+            description: APP_DESCRIPTION,
+            image: logolink,
+            url: DOMAIN,
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "NewsMediaOrganization",
+            name: APP_NAME,
+            url: url,
+            logo: {
+                "@type": "ImageObject",
+                url: logolink,
+                height: "50",
+                width: "50",
+            },
+        },
+    ];
 
 
 
@@ -214,20 +301,20 @@ const SingleBlogPost = ({ blog, errorCode, recentPosts }) => {
 
     const head = () => (
         <Head>
-            <title >{`${blog?.title} - ${APP_NAME}`}</title>
-            <meta name="description" content={blog?.mdesc} />
-            <link rel="canonical" href={`${DOMAIN}/${blog?.slug}`} />
-            <meta property="og:title" content={`${blog?.mtitle}| ${APP_NAME}`} />
-            <meta property="og:description" content={blog?.mdesc} />
+            <title >{`${title} - ${APP_NAME}`}</title>
+            <meta name="description" content={description} />
+            <link rel="canonical" href={url} />
+            <meta property="og:title" content={`${title} | ${APP_NAME}`} />
+            <meta property="og:description" content={description} />
             <meta property="og:type" content="webiste" />
             <meta name="robots" content="follow, index, noarchive, max-snippet:-1, max-video-preview:-1, max-image-preview:large" />
-            <meta property="og:url" content={`${DOMAIN}/${blog?.slug}`} />
-            <meta property="og:site_name" content={`${APP_NAME}`} />
-            <meta property="og:image" content={blog?.photo} />
-            <meta property="og:image:secure_url" content={blog?.photo} />
+            <meta property="og:url" content={url} />
+            <meta property="og:site_name" content={APP_NAME} />
+            <meta property="og:image" content={photo} />
+            <meta property="og:image:secure_url" content={photo} />
             <meta property="og:image:type" content="image/jpg" />
-            <meta property="article:published_time" content={blog?.date} />
-            <meta property="article:modified_time" content={blog?.date} />
+            <meta property="article:published_time" content={date} />
+            <meta property="article:modified_time" content={date} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
         </Head>
     );
