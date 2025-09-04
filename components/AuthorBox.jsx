@@ -8,7 +8,7 @@ const AuthorBox = ({ selectedAuthorName }) => {
     const authors = [
         {
             name: 'Divyanshu Rawat',
-            image: '/divyanshu.webp',
+            image: '/divyanshu-rawat.webp',
             bio: `मैं एक पोस्ट ग्रेजुएट छात्र निवेशक और शेयर बाजार का गहरा उत्साही हूँ जो '${DOMAIN}' में कंटेंट राइटर के रूप में कार्यरत रहते हुए फाइनेंस और स्टॉक्स पर शोधपूर्ण लेखन करता हूँ तथा जिसका उद्देश्य वित्तीय साक्षरता को बढ़ावा देना और लोगों को समझदारी से निवेश करने की प्रेरणा देना है`,
             socialMedia: [
                 {
@@ -67,7 +67,7 @@ const AuthorBox = ({ selectedAuthorName }) => {
     if (!selectedAuthor) { return <div className="text-red-500 p-4">Author not found.</div> }
 
     return (
-        <div className="max-w-md bg-white rounded-xl shadow-md overflow-hidden md:max-w-3xl">
+        <div className="max-w-md mx-auto md:mx-0 bg-white rounded-xl shadow-md overflow-hidden md:max-w-3xl">
             <div className="md:flex">
                 <div className="md:shrink-0 p-6 self-center">
                     <div className="h-32 w-32 rounded-full overflow-hidden relative mx-auto md:mx-0">
@@ -76,10 +76,10 @@ const AuthorBox = ({ selectedAuthorName }) => {
                 </div>
 
                 <div className="p-8">
-                    <h2 className="block mt-1 text-lg leading-tight font-medium text-black text-[23px]">
+                    <h2 className="block mt-1 text-lg leading-tight font-medium text-black text-[23px] md:text-left text-center">
                         {selectedAuthor.name}
                     </h2>
-                    <div className="mt-4 flex space-x-4">
+                    <div className="mt-4 space-x-4 flex md:justify-start justify-center">
                         {selectedAuthor.socialMedia.map((platform, index) => (
                             <a key={index} href={platform.url} target="_blank" rel="noopener noreferrer" aria-label={platform.name}
                                 className="text-slate-500 transition-colors duration-300" >
@@ -87,7 +87,7 @@ const AuthorBox = ({ selectedAuthorName }) => {
                             </a>
                         ))}
                     </div>
-                    <p className="mt-4">{selectedAuthor.bio}</p>
+                    <p className="mt-4 md:text-left text-center">{selectedAuthor.bio}</p>
                 </div>
 
             </div>

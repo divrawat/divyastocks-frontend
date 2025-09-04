@@ -381,7 +381,7 @@ const SingleBlogPost = ({ blog, errorCode, recentPosts }) => {
                         </div>
 
                         <section className='my-10'>
-                            <div className='text-[25px] font-bold'>About The Author</div>
+                            <div className='text-[25px] font-bold  text-center md:text-left'>About The Author</div>
                             <AuthorBox selectedAuthorName={blog?.author} />
                         </section>
 
