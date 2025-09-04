@@ -14,8 +14,8 @@ const generateRssItem = (post) => {
       <title>${post?.title}</title>
       <link>${DOMAIN}/${post?.slug}</link>
       <pubDate>${formattedDate}</pubDate>
-      <guid>${DOMAIN}/${post?.slug}</guid>
-      <dc:creator><![CDATA[${post?.postedBy.name}]]></dc:creator>
+      <guid isPermaLink="true">${DOMAIN}/${post?.slug}</guid>
+      <dc:creator><![CDATA[${post?.author}]]></dc:creator>
       <description><![CDATA[${post?.mdesc}]]></description>
       <content:encoded><![CDATA[
         <div><img decoding="async" src="${post?.photo}" /></div>
@@ -32,15 +32,15 @@ const generateRss = (posts) => `
       <atom:link href="${DOMAIN}/feeds/" rel="self" type="application/rss+xml" />
       <link>${DOMAIN}</link>
       <description>${APP_DESCRIPTION}</description>
-      <language>en-US</language>
+      <language>hi-IN</language>
       <generator>Next.js</generator>
 
       <image>
-      <url>${DOMAIN}/images/logo-192x192.png</url>
+      <url>${DOMAIN}/logo.jpg</url>
       <title>${APP_NAME}</title>
       <link>${DOMAIN}</link>
-      <width>192</width>
-      <height>192</height>
+      <width>50</width>
+      <height>50</height>
   </image> 
 
       ${posts?.map(generateRssItem).join('')}

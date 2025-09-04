@@ -64,7 +64,7 @@ const EditBlogPage = () => {
                 if (status === 'Publish') { toast.success(`Blog titled "${data.title}" is Updated`); }
 
                 let postslug = slugify(data.slug).toLowerCase();
-                function redirect() { Router.push(`/${postslug}`); }
+                function redirect() { Router.push(`/${data?.slug}`); }
                 setTimeout(redirect, 500);
             }
         });

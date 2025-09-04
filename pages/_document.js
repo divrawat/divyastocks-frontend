@@ -1,3 +1,4 @@
+import { APP_NAME, DOMAIN } from '@/config';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 
 export default class MyDocument extends Document {
@@ -13,7 +14,7 @@ export default class MyDocument extends Document {
     return (
       <Html lang='hi'>
         <Head>
-
+          <link rel="alternate" type="application/rss+xml" title={APP_NAME} href={`${DOMAIN}/rss.xml`}></link>
           {/* <script src="https://www.googletagmanager.com/gtag/js?id=G-BN0814FKHT" />
           <script type='text/javascript'
             dangerouslySetInnerHTML={{

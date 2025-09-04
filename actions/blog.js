@@ -201,7 +201,7 @@ export const list = async (page, search, token) => {
 
 export const Feeds = async () => {
     try {
-        const response = await fetch(`${BACKEND}/api/blog/feeds`, {
+        const response = await fetch(`${BACKEND}/api/rss-feeds`, {
             method: 'GET', headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',

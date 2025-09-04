@@ -62,6 +62,7 @@ const CreateBlogPage = () => {
 
         formData.set('status', status);
         formData.set('userId', isAuth()._id);
+        formData.set('author', author);
 
         if (status === 'Draft') { setValues({ ...values, draft: 'Saving Draft...', loading: true }); }
         if (status === 'Publish') { setValues({ ...values, publishtext: 'Publishing...', loading: true }); }
@@ -75,7 +76,8 @@ const CreateBlogPage = () => {
                 if (status === 'Publish') {
                     toast.success(`A new blog titled "${data.title}" is created`);
                     let postslug = slugify(slug).toLowerCase();
-                    function redirect() { Router.push(`/${postslug}`); }
+
+                    function redirect() { Router.push(`/${data?.slug}`); }
                     setTimeout(redirect, 500);
                 }
 
