@@ -102,8 +102,10 @@ function RecentPosts({ posts }) {
             <div className="flex items-start space-x-4">
 
               <div className="flex-shrink-0">
-                <div className="w-24 bg-blue-100 rounded-lg flex items-center justify-center">
-                  <img src={`${post?.photo}`} className="object-cover" />
+                <div className=" rounded-lg flex items-center justify-center">
+                  {/* <img src={`${post?.photo}`} className="object-cover w-[100px] h-[80px]" /> */}
+                  <img src={`${post?.photo}`} className="object-contain w-[100px] h-[80px] bg-gray-100" />
+
                 </div>
               </div>
 
