@@ -5,7 +5,7 @@ import Head from "next/head";
 import { useState, useEffect } from "react";
 import { listBlogsWithCategoriesAndTags } from "../actions/blog";
 import { format, utcToZonedTime } from 'date-fns-tz';
-import { APP_NAME, APP_DESCRIPTION, DOMAIN } from "@/config";
+import { APP_NAME, APP_DESCRIPTION, DOMAIN, APP_TITLE } from "@/config";
 import { useRouter } from 'next/router';
 export const runtime = "experimental-edge";
 
@@ -194,7 +194,7 @@ export default function Home({ initialBlogs, initialPagination, recentPosts }) {
   const head = () => (
     <Head>
       <html lang="hi" />
-      <title>{`${APP_NAME} `}</title>
+      <title>{`${APP_TITLE} `}</title>
       <meta name="description" content={APP_DESCRIPTION} />
       <link rel="canonical" href={`${DOMAIN}`} />
       <meta property="og:title" content={`${APP_NAME}`} />
