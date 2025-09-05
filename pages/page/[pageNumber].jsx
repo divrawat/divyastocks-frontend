@@ -148,29 +148,49 @@ const BlogPage = ({ blogs, pagination, recentPosts }) => {
         "@context": "[https://schema.org](https://schema.org)",
         "@graph": [
             {
-                "@type": "WebSite",
+                "@type": "NewsMediaOrganization",
                 "name": APP_NAME,
-                "url": `${DOMAIN}/page/${currentPage}`,
+                "url": DOMAIN,
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": `${DOMAIN}/logo.jpg`,
+                    "height": "50",
+                    "width": "50"
+                }
+            },
+            {
+                "@type": "WebSite",
+                "url": DOMAIN,
                 "potentialAction": {
                     "@type": "SearchAction",
-                    "target": `${DOMAIN}/search?q={search_term_string}`,
+                    "target": {
+                        "@type": "EntryPoint",
+                        "urlTemplate": `${DOMAIN}/search?s={search_term_string}`
+                    },
                     "query-input": "required name=search_term_string"
                 }
             },
             {
-                "@type": "Organization",
+                "@type": "WebPage",
                 "name": APP_NAME,
-                "url": `${DOMAIN}/page/${currentPage}`,
-                "logo": {
-                    "@type": "ImageObject",
-                    "url": `${DOMAIN}/logo.jpg`
+                "description": APP_DESCRIPTION,
+                "url": DOMAIN
+            },
+            {
+                "@type": "LocalBusiness",
+                "name": APP_NAME,
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Mohali",
+                    "addressRegion": "Punjab",
+                    "postalCode": "140301",
+                    "addressCountry": "India"
                 },
-                "sameAs": [
-                    "https://www.instagram.com/thestockmarketindia/?hl=en",
-                    "https://x.com/stocks_channel",
-                    "https://www.youtube.com/channel/UCUP_ao_7-Yct5FcVIA4Kobg"
-
-                ]
+                "telephone": "9988177179",
+                "openingHours": ["Mo-Su 00:00-23:59"],
+                "description": APP_DESCRIPTION,
+                "image": `${DOMAIN}/logo.jpg`,
+                "url": DOMAIN
             }
         ]
     };
