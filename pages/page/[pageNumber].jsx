@@ -83,7 +83,7 @@ function BlogCard({ post }) {
 
                         </div>
                         <span className="text-xs font-medium text-gray-700">
-                            <a href={`${DOMAIN}/profile/${authorprofile}`}> {post?.author}</a>
+                            <a href={`${DOMAIN}/profile/${authorprofile}`}>{post?.author}</a>
                         </span>
                     </div>
 

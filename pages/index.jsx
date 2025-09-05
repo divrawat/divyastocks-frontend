@@ -77,12 +77,12 @@ function BlogCard({ post }) {
 
             </div>
             <span className="text-xs font-medium text-gray-700">
-              <a href={`${DOMAIN}/profile/${authorprofile}`}> {post?.author}</a>
+              <a href={`${DOMAIN}/profile/${authorprofile}`}>{post?.author}</a>
             </span>
           </div>
 
           <button className="text-[#0f5c7d] hover:text-[#0A4158] text-xs font-medium">
-            <a href={`${DOMAIN}/${post?.slug}`}>  Read More →</a>
+            <a href={`${DOMAIN}/${post?.slug}`}> Read More →</a>
           </button>
         </div>
       </div>
@@ -201,7 +201,7 @@ export default function Home({ initialBlogs, initialPagination, recentPosts }) {
       <meta property="og:title" content={`${APP_NAME}`} />
       <meta property="og:description" content={APP_DESCRIPTION} />
       <meta property="og:type" content="website" />
-      <meta name="robots" content="index, follow" />
+      <meta name="robots" content="follow, index, noarchive, max-snippet:-1, max-video-preview:-1, max-image-preview:large" />
       <meta property="og:url" content={`${DOMAIN}`} />
       <meta property="og:site_name" content={`${APP_NAME}`} />
       <meta property="og:image" content={`${DOMAIN}/logo.jpg`} />
