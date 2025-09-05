@@ -46,7 +46,7 @@ import { APP_DESCRIPTION, APP_NAME, DOMAIN } from '@/config';
 
 export default function CenteredFooter() {
     return (
-        <footer className="bg-gradient-to-br from-gray-900 to-black text-white pt-16 pb-8 px-4">
+        <footer className="bg-[#0f5c7d] text-white pt-16 pb-8 px-4">
             <div className="max-w-6xl mx-auto">
 
                 <div className="md:flex items-center justify-center gap-28">
