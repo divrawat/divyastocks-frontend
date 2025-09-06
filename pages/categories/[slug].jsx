@@ -160,12 +160,12 @@ const Category = ({ category, blogs, pagination, query, errorCode }) => {
                         <div className="flex items-center">
                             <div className="w-6 h-6 bg-gray-300 rounded-full flex items-center justify-center mr-2">
                                 <span className="text-xs font-medium text-gray-600">
-                                    <img src="/divyanshu.png" alt="" className="rounded-full" />
+                                    <img src="/divyanshu.png" alt={post?.author} className="rounded-full" />
                                 </span>
 
                             </div>
                             <span className="text-xs font-medium text-gray-700">
-                                {post?.postedBy?.name}
+                                {post?.author}
                             </span>
                         </div>
 

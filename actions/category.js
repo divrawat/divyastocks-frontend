@@ -30,7 +30,7 @@ export const getCategories = async (page = 1, perPage = 12) => {
     }
 };
 
-export const singleCategory = async (slug, page = 1, perPage = 3) => {
+export const singleCategory = async (slug, page = 1, perPage = 6) => {
     try {
         const response = await fetch(`${BACKEND}/api/category/${slug}?page=${page}&perPage=${perPage}`, {
             method: 'GET',
