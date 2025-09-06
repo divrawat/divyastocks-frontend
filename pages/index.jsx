@@ -72,7 +72,7 @@ function BlogCard({ post }) {
           <div className="flex items-center">
             <div className="w-6 h-6 bg-gray-300 rounded-full flex items-center justify-center mr-2">
               <span className="text-xs font-medium text-gray-600">
-                <img src={imageSrc} alt="" className="rounded-full" />
+                <img src={imageSrc} alt={post?.author} className="rounded-full" />
               </span>
 
             </div>
@@ -104,7 +104,7 @@ function RecentPosts({ posts }) {
               <div className="flex-shrink-0">
                 <div className=" rounded-lg flex items-center justify-center">
                   {/* <img src={`${post?.photo}`} className="object-cover w-[100px] h-[80px]" /> */}
-                  <img src={`${post?.photo}`} className="object-contain w-[100px] h-[80px] bg-gray-100" />
+                  <img src={`${post?.photo}`} alt={post?.title} className="object-contain w-[100px] h-[80px] bg-gray-100" />
 
                 </div>
               </div>
