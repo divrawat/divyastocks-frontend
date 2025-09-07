@@ -35,7 +35,7 @@ export const listBlogsWithCategoriesAndTags = async () => {
 */
 
 
-export const listBlogsWithCategoriesAndTags = async (page = 1, perPage = 6) => {
+export const listBlogsWithCategoriesAndTags = async (page = 1, perPage = 9) => {
     try {
         const response = await fetch(`${BACKEND}/api/blogs-categories-tags?page=${page}&perPage=${perPage}`, {
             method: 'GET',
