@@ -1,5 +1,6 @@
 import { APP_NAME, DOMAIN } from '@/config';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
+import Script from 'next/script';
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -21,6 +22,14 @@ export default class MyDocument extends Document {
               __html: `{window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-BN0814FKHT');}`
             }}
           /> */}
+
+
+          <Script
+            async
+            strategy="afterInteractive"
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4311422461872967`}
+            crossOrigin="anonymous"
+          />
 
         </Head>
 

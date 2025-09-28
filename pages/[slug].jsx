@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { singleBlog, allblogs } from '../actions/blog';
 import { DOMAIN, APP_NAME, logolink, APP_DESCRIPTION } from "../config";
-import SmallCard from '@/components/SmallCard';
 import { isAuth } from '@/actions/auth';
 import { format, utcToZonedTime } from 'date-fns-tz';
 import Navbar from '@/components/Navbar';
@@ -16,6 +15,8 @@ import { IoLogoWhatsapp } from "react-icons/io";
 import { FaRedditAlien } from "react-icons/fa";
 import slugify from 'slugify';
 export const runtime = "experimental-edge";
+import dynamic from 'next/dynamic';
+const ContentAdsense = dynamic(() => import('@/components/ContentAdsense'), { ssr: false });
 
 const SingleBlogPost = ({ blog, errorCode, recentPosts }) => {
 
@@ -371,7 +372,8 @@ const SingleBlogPost = ({ blog, errorCode, recentPosts }) => {
                                     </section>
 
                                     <section className="postcontent">
-                                        <div dangerouslySetInnerHTML={{ __html: blog?.body }} />
+                                        {/* <div dangerouslySetInnerHTML={{ __html: blog?.body }} /> */}
+                                        <ContentAdsense html={blog?.body} />
                                         <div>
                                             {showBlogCategories()}
                                         </div>
