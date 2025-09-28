@@ -24,12 +24,8 @@ export default class MyDocument extends Document {
           /> */}
 
 
-          <Script
-            async
-            strategy="afterInteractive"
-            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4311422461872967`}
-            crossOrigin="anonymous"
-          />
+          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4311422461872967"
+            crossorigin="anonymous"></script>
 
         </Head>
 
