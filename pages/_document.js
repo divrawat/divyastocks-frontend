@@ -23,8 +23,8 @@ export default class MyDocument extends Document {
           /> */}
 
 
-          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4311422461872967"
-            crossorigin="anonymous"></script>
+          {/* <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4311422461872967"
+            crossorigin="anonymous"></script> */}
 
         </Head>
 
