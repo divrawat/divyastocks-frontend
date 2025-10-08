@@ -16,6 +16,7 @@ export default class MyDocument extends Document {
         <Head>
           <link rel="alternate" type="application/rss+xml" title={APP_NAME} href={`${DOMAIN}/rss.xml`}></link>
           <meta name="google-adsense-account" content="ca-pub-6702090162772402"></meta>
+          <meta name="google-adsense-account" content="ca-pub-7932109108630059"></meta>
           {/* <script src="https://www.googletagmanager.com/gtag/js?id=G-BN0814FKHT" />
           <script type='text/javascript'
             dangerouslySetInnerHTML={{

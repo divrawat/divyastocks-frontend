@@ -210,6 +210,7 @@ export default function Home({ initialBlogs, initialPagination, recentPosts }) {
       <meta property="og:locale" content="hi_IN" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <meta name="google-adsense-account" content="ca-pub-6702090162772402"></meta>
+      <meta name="google-adsense-account" content="ca-pub-7932109108630059"></meta>
     </Head>
   );
 
