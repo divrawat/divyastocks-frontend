@@ -12,7 +12,7 @@ export const APP_DESCRIPTION = 'Divyastocks.online एक समर्पित 
 export const APP_TITLE = 'DivyaStocks: IPO, शेयर बाजार और क्रिप्टोकरेंसी समाचार'
 
 // Navbar
-export const logo = <img src="/logo.webp" alt="Logo" className="h-[50px] w-[50px] mr-5 md:ml-0 ml-4 md:my-0 my-1 rounded-full" />
+export const logo = <img src="/logo.webp" alt="Logo" className="h-[50px] w-[100px] mr-5 md:ml-0 ml-4 md:my-0 my-1 rounded-full" />
 export const logolink = `${DOMAIN}/logo.webp`
 export const APP_NAME = 'DivyaStocks';
 export const NavbarName = "DivyaStocks";

@@ -117,7 +117,7 @@ const SingleBlogPost = ({ blog, errorCode, recentPosts }) => {
 
                                 <div className="flex-shrink-0">
                                     <div className="w-24 bg-blue-100 rounded-lg flex items-center justify-center">
-                                        <img src={`${post?.photo}`} alt={post?.title} className="object-cover" />
+                                        <img src={`${IMAGES_DOMAIN}/${post?.photo}`} alt={post?.title} className="object-cover" />
                                     </div>
                                 </div>
 
