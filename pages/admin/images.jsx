@@ -391,13 +391,14 @@ const ImageUploader = () => {
                                 {images.map((img) => (
                                     <div key={img._id} className="group relative rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                                         <img
-                                            src={img.url}
+                                            // src={img.url}
+                                            src={`${DOMAIN}/${img.url}`}
                                             alt="Uploaded"
                                             className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300"
                                         />
                                         <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
                                             <button
-                                                onClick={() => copyImageUrl(img.url, img._id)}
+                                                onClick={() => copyImageUrl(`${DOMAIN}/${img.url}`, img._id)}
                                                 className="bg-white text-gray-800 rounded-full p-2 shadow-md hover:bg-blue-50 transition-colors"
                                                 title="Copy image URL"
                                             >
