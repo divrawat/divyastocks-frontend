@@ -5,7 +5,7 @@ import Head from "next/head";
 import { useState, useEffect } from "react";
 import { listBlogsWithCategoriesAndTags } from "../actions/blog";
 import { format, utcToZonedTime } from 'date-fns-tz';
-import { APP_NAME, APP_DESCRIPTION, DOMAIN, APP_TITLE } from "@/config";
+import { APP_NAME, APP_DESCRIPTION, DOMAIN, APP_TITLE, IMAGES_DOMAIN } from "@/config";
 import { useRouter } from 'next/router';
 export const runtime = "experimental-edge";
 
@@ -39,7 +39,7 @@ function BlogCard({ post }) {
     <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full flex flex-col">
 
       <div className="relative h-40 bg-gray-200">
-        <img src={post?.photo} alt={post?.title} className="w-full h-full object-cover" />
+        <img src={`${IMAGES_DOMAIN}/${post?.photo}`} alt={post?.title} className="w-full h-full object-cover" />
 
         <div className="absolute top-3 left-3">
           <span className=" flex text-white text-xs font-medium rounded-full">
@@ -104,7 +104,7 @@ function RecentPosts({ posts }) {
               <div className="flex-shrink-0">
                 <div className=" rounded-lg flex items-center justify-center">
                   {/* <img src={`${post?.photo}`} className="object-cover w-[100px] h-[80px]" /> */}
-                  <img src={`${post?.photo}`} alt={post?.title} className="object-contain w-[100px] h-[80px] bg-gray-100" />
+                  <img src={`${IMAGES_DOMAIN}/${post?.photo}`} alt={post?.title} className="object-contain w-[100px] h-[80px] bg-gray-100" />
 
                 </div>
               </div>

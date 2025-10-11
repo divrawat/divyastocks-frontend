@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { singleBlog, allblogs } from '../actions/blog';
-import { DOMAIN, APP_NAME, logolink, APP_DESCRIPTION } from "../config";
+import { DOMAIN, APP_NAME, logolink, APP_DESCRIPTION, IMAGES_DOMAIN } from "../config";
 import { isAuth } from '@/actions/auth';
 import { format, utcToZonedTime } from 'date-fns-tz';
 import Navbar from '@/components/Navbar';
@@ -366,7 +366,7 @@ const SingleBlogPost = ({ blog, errorCode, recentPosts }) => {
 
                                         <section>
                                             <div className='mt-3 mb-8'>
-                                                <img src={blog?.photo} alt={blog?.title} className='w-full h-auto rounded-lg' />
+                                                <img src={`${IMAGES_DOMAIN}/${blog?.photo}`} alt={blog?.title} className='w-full h-auto rounded-lg' />
                                             </div>
                                         </section>
                                     </section>
