@@ -17,7 +17,7 @@ const Pagination = ({ currentPage, totalPages, basePath = "/page" }) => {
     }
 
     return (
-        <div className="flex justify-center mt-8 space-x-2">
+        <div className="flex justify-center flex-wrap mt-8 space-x-2">
             {/* Previous Button */}
             <Link
                 href={currentPage > 2 ? `${basePath}/${currentPage - 1}` : "/"}
