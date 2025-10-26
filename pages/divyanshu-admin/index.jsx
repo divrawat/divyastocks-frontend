@@ -71,14 +71,14 @@ const Admin = () => {
                 <div className="relative py-3 sm:w-96 mx-auto text-center">
                     <span className="text-2xl font-light ">Admin Login to your account</span>
                     <div className="mt-4 bg-white shadow-md rounded-lg text-left">
-                        <div className="h-2 bg-[#0f5c7d]rounded-t-md"></div>
+                        <div className="h-2 bg-[#ca0a0a]rounded-t-md"></div>
                         <div className="px-8 py-6 ">
                             <label className="block font-semibold"> Email </label>
                             <input value={email} onChange={handleChange('email')} name="email" type="text" placeholder="Email" className="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md" />
                             <label className="block mt-3 font-semibold"> Password </label>
                             <input value={password} onChange={handleChange('password')} name="password" type="password" placeholder="Password" className="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md" />
                             <div className="flex justify-between items-baseline">
-                                <button type="submit" className="mt-4  bg-[#0f5c7d] text-white py-2 px-6 rounded-md hover:bg-[#0f5c7d] ">Login</button>
+                                <button type="submit" className="mt-4  bg-[#ca0a0a] text-white py-2 px-6 rounded-md hover:bg-[#ca0a0a] ">Login</button>
                                 {/* <a href="#" className="text-sm hover:underline">Forgot password?</a> */}
                             </div>
                         </div>

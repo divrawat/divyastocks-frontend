@@ -33,7 +33,7 @@ const Pagination2 = ({ currentPage, totalPages, onPageChange, basePath = "" }) =
                     disabled={currentPage === 1}
                     className={`px-4 py-2 rounded-md ${currentPage === 1
                         ? 'bg-gray-300 cursor-not-allowed'
-                        : 'bg-[#0f5c7d] text-white hover:bg-[#0A4158]'
+                        : 'bg-[#ca0a0a] text-white hover:bg-[#0A4158]'
                         }`}
                 >
                     Previous
@@ -49,7 +49,7 @@ const Pagination2 = ({ currentPage, totalPages, onPageChange, basePath = "" }) =
                 >
                     <button
                         className={`px-4 py-2 rounded-md ${currentPage === page
-                            ? 'bg-[#0f5c7d] text-white'
+                            ? 'bg-[#ca0a0a] text-white'
                             : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
                             }`}
                     >
@@ -67,7 +67,7 @@ const Pagination2 = ({ currentPage, totalPages, onPageChange, basePath = "" }) =
                     disabled={currentPage === totalPages}
                     className={`px-4 py-2 rounded-md ${currentPage === totalPages
                         ? 'bg-gray-300 cursor-not-allowed'
-                        : 'bg-[#0f5c7d] text-white hover:bg-[#0A4158]'
+                        : 'bg-[#ca0a0a] text-white hover:bg-[#0A4158]'
                         }`}
                 >
                     Next

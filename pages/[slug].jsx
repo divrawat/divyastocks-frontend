@@ -93,7 +93,7 @@ const SingleBlogPost = ({ blog, errorCode, recentPosts }) => {
 
     const showBlogCategories = () => {
         return (blog?.categories && blog?.categories?.map((c, i) => (
-            <Link key={i} href={`/categories/${c?.slug}`}><button className='bg-[#0f5c7d] text-[white] m-3 hover:scale-105 transition-transform font-bold rounded py-2 px-3'  >{c?.name}</button></Link>
+            <Link key={i} href={`/categories/${c?.slug}`}><button className='bg-[#ca0a0a] text-[white] m-3 hover:scale-105 transition-transform font-bold rounded py-2 px-3'  >{c?.name}</button></Link>
         )))
     };
 
@@ -135,7 +135,7 @@ const SingleBlogPost = ({ blog, errorCode, recentPosts }) => {
                 </div>
 
                 <div className="mt-6 pt-4 border-t border-gray-200">
-                    <button className="w-full text-center text-[#0f5c7d] hover:text-[#0A4158] text-sm font-medium">
+                    <button className="w-full text-center text-[#ca0a0a] hover:text-[#0A4158] text-sm font-medium">
                         View All Posts →
                     </button>
                 </div>

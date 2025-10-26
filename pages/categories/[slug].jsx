@@ -147,7 +147,7 @@ const Category = ({ category, blogs, pagination, query, errorCode }) => {
                     <div className="absolute top-3 left-3">
                         <span className=" flex text-white text-xs font-medium rounded-full">
                             {post?.categories.map((cat, i) => {
-                                return <div key={i} className="mr-1 p-1 bg-[#0f5c7d] rounded-md"><a href={`${DOMAIN}/categories/${cat?.slug}`}>{cat?.name}</a></div>
+                                return <div key={i} className="mr-1 p-1 bg-[#ca0a0a] rounded-md"><a href={`${DOMAIN}/categories/${cat?.slug}`}>{cat?.name}</a></div>
                             })}
                         </span>
                     </div>
@@ -184,7 +184,7 @@ const Category = ({ category, blogs, pagination, query, errorCode }) => {
                             </span>
                         </div>
 
-                        <button className="text-[#0f5c7d] hover:text-[#0A4158] text-xs font-medium">
+                        <button className="text-[#ca0a0a] hover:text-[#0A4158] text-xs font-medium">
                             <a href={`${DOMAIN}/${post?.slug}`}>  Read More →</a>
                         </button>
                     </div>
